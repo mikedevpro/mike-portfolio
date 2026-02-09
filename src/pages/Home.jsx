@@ -1,4 +1,6 @@
 import Layout from "../components/Layout.jsx";
+import { Link } from "react-router-dom";
+
 
 export default function Home({ dark, setDark }) {
   return (
@@ -152,9 +154,13 @@ function ProjectCard({ title, description, focus, tech, links }) {
       <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
         {links.map((l) =>
           l.href.startsWith("/") ? (
-            <a key={l.label} href={l.href} className="text-zinc-900 hover:underline dark:text-white">
+            <Link
+              key={l.label}
+              to={l.href}
+              className="text-zinc-900 hover:underline dark:text-white"
+            >
               {l.label}
-            </a>
+            </Link>
           ) : (
             <a
               key={l.label}
