@@ -58,11 +58,11 @@ export default function App() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
             <ProjectCard
               title="Budget App (Flagship)"
-              description="Expense tracking with categories, charts, summaries, and local persistence. Built to expand into full-stack."
+              description="A production-ready budget tracking app built with React, focused on usability, clean UI, and maintainable state management. Supports categorized expenses, summaries, and visual breakdowns, with a roadmap toward a full-stack architecture."
               tech="React • JS • LocalStorage • Charts"
               links={[
-                { label: "Live Demo", href: "#" },
-                { label: "GitHub", href: "#" },
+                { label: "Live Demo", href: "https://budget-app-lake-omega.vercel.app" },
+                { label: "GitHub", href: "https://github.com/mikedevpro/budget_app" },
               ]}
             />
             <ProjectCard
@@ -112,11 +112,11 @@ export default function App() {
         <section id="contact" style={{ padding: "32px 0 56px" }}>
           <h2 style={{ margin: "0 0 14px" }}>Contact</h2>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:you@example.com">you@example.com</a>
+            <a href="mailto:Mnobles33@gmail.com">Mnobles33@gmail.com</a>
             <span style={{ opacity: 0.5 }}>|</span>
-            <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://linkedin.com/in/michael-nobles-0242b014b" target="_blank" rel="noreferrer">LinkedIn</a>
             <span style={{ opacity: 0.5 }}>|</span>
-            <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://github.com/mikedevpro" target="_blank" rel="noreferrer">GitHub</a>
           </div>
           <p style={{ marginTop: 12, fontSize: 13, opacity: 0.7 }}>
             Tip: Use a real email + your LinkedIn/GitHub links here. That’s the #1 recruiter path.
