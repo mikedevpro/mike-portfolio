@@ -8,7 +8,7 @@ export default function Home({ dark, setDark }) {
           {/* NAV */}
           <nav className="flex items-center justify-between">
             <Link to="/" className="font-extrabold tracking-tight text-lg">
-              Mike Nobles
+              Michael Nobles
             </Link>
 
             <div className="flex items-center gap-3">
@@ -148,15 +148,15 @@ export default function Home({ dark, setDark }) {
             </p>
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-600 dark:text-zinc-300">
-              <a className="hover:text-zinc-900 dark:hover:text-white" href="mailto:you@example.com">
-                you@example.com
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="mailto:Mnobles33@gmail.com">
+                Mnobles33@gmail.com
               </a>
               <span className="text-zinc-400">•</span>
-              <a className="hover:text-zinc-900 dark:hover:text-white" href="#" target="_blank" rel="noreferrer">
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="https://www.linkedin.com/in/michael-nobles-0242b014b" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
               <span className="text-zinc-400">•</span>
-              <a className="hover:text-zinc-900 dark:hover:text-white" href="#" target="_blank" rel="noreferrer">
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="https://github.com/mikedevpro" target="_blank" rel="noreferrer">
                 GitHub
               </a>
             </div>
@@ -167,7 +167,7 @@ export default function Home({ dark, setDark }) {
           </section>
 
           <footer className="border-t border-zinc-200 pt-6 text-xs text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-            © {new Date().getFullYear()} Mike Nobles
+            © {new Date().getFullYear()} Michael Nobles
           </footer>
         </div>
       </div>
