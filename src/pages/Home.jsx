@@ -1,5 +1,6 @@
 import Layout from "../components/Layout.jsx";
 import { Link } from "react-router-dom";
+import { Mail, Linkedin, Github, ArrowUpRight, BookOpen, ExternalLink } from "lucide-react";
 
 
 export default function Home({ dark, setDark }) {
@@ -50,9 +51,10 @@ export default function Home({ dark, setDark }) {
             focus="State management, clean component structure, user-friendly forms, and data persistence."
             tech={["React", "JavaScript", "LocalStorage", "Charts"]}
             links={[
-              { label: "Case Study", href: "/budget-app" },
-              { label: "Live Demo", href: "https://budget-app-lake-omega.vercel.app/" },
-              { label: "GitHub", href: "https://github.com/mikedevpro/budget_app" },
+              { label: "Case Study", href: "/budget-app", icon: BookOpen },
+              { label: "Live Demo", href: "https://budget-app-lake-omega.vercel.app/", icon: ExternalLink },
+              { label: "GitHub", href: "https://github.com/mikedevpro/budget_app", icon: Github },
+              { label: "GitHub", href: "#", icon: Github },
             ]}
           />
 
@@ -109,19 +111,47 @@ export default function Home({ dark, setDark }) {
           Open to junior or early-mid full-stack roles and excited to contribute to real production teams.
         </p>
 
-        <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-600 dark:text-zinc-300">
-          <a className="hover:text-zinc-900 dark:hover:text-white" href="mailto: Mnobles33@gmail.com">
-            Mnobles33@gmail.com
-          </a>
-          <span className="text-zinc-400">•</span>
-          <a className="hover:text-zinc-900 dark:hover:text-white" href="linkedin.com/in/michael-nobles-0242b014b" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <span className="text-zinc-400">•</span>
-          <a className="hover:text-zinc-900 dark:hover:text-white" href="https://github.com/mikedevpro" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </div>
+       <div className="flex flex-wrap items-center gap-6 text-sm">
+       <a
+         href="mailto:you@example.com"
+         className="group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2
+               text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900
+               dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white"
+        >
+        <Mail className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6" />
+        <span className="hidden sm:inline">Email</span>
+        <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
+    </a>
+
+  <a
+    href="https://www.linkedin.com/in/YOUR_LINKEDIN"
+    target="_blank"
+    rel="noreferrer"
+    className="group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2
+               text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900
+               dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white"
+  >
+    <Linkedin className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6" />
+    <span className="hidden sm:inline">LinkedIn</span>
+    <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
+  </a>
+
+  <a
+    href="https://github.com/mikedevpro"
+    target="_blank"
+    rel="noreferrer"
+    className="group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2
+               text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900
+               dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white"
+  >
+    <Github className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6" />
+    <span className="hidden sm:inline">GitHub</span>
+    <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
+  </a>
+</div>
+
+
+        
       </section>
     </Layout>
   );
@@ -152,28 +182,37 @@ function ProjectCard({ title, description, focus, tech, links }) {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
-        {links.map((l) =>
-          l.href.startsWith("/") ? (
-            <Link
-              key={l.label}
-              to={l.href}
-              className="text-zinc-900 hover:underline dark:text-white"
-            >
-              {l.label}
-            </Link>
-          ) : (
-            <a
-              key={l.label}
-              href={l.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-zinc-900 hover:underline dark:text-white"
-            >
-              {l.label}
-            </a>
-          )
-        )}
-      </div>
+  {links.map((l) =>
+    l.href.startsWith("/") ? (
+      <Link
+        key={l.label}
+        to={l.href}
+        className="group inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2
+                   text-zinc-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-50
+                   dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900"
+      >
+        {l.icon ? <l.icon className="h-4 w-4" /> : null}
+        <span>{l.label}</span>
+        <ArrowUpRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" />
+      </Link>
+    ) : (
+      <a
+        key={l.label}
+        href={l.href}
+        target="_blank"
+        rel="noreferrer"
+        className="group inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2
+                   text-zinc-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-50
+                   dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900"
+      >
+        {l.icon ? <l.icon className="h-4 w-4" /> : null}
+        <span>{l.label}</span>
+        <ArrowUpRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" />
+      </a>
+    )
+  )}
+</div>
+
     </div>
   );
 }
