@@ -1,131 +1,170 @@
+import { useEffect, useState } from "react";
+
 export default function App() {
+  const [dark, setDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    return saved ? saved === "dark" : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }, [dark]);
+
   return (
-    <div style={{ fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial" }}>
-      <div style={{ maxWidth: 980, margin: "0 auto", padding: "48px 20px" }}>
-        {/* NAV */}
-        <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ fontWeight: 800, letterSpacing: 0.2 }}>Mike Nobles</div>
-          <div style={{ display: "flex", gap: 14, fontSize: 14 }}>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
+    <div className={dark ? "dark" : ""}>
+      <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
+        <div className="mx-auto max-w-5xl px-5 py-10">
+          {/* NAV */}
+          <nav className="flex items-center justify-between">
+            <div className="font-extrabold tracking-tight text-lg">Mike Nobles</div>
 
-        {/* HERO */}
-        <header style={{ padding: "56px 0 36px" }}>
-          <h1 style={{ fontSize: 44, lineHeight: 1.05, margin: "0 0 12px" }}>
-            Full-Stack Web Developer
-          </h1>
-          <p style={{ fontSize: 18, maxWidth: 720, margin: "0 0 22px", opacity: 0.85 }}>
-            I build clean, user-friendly web apps with React and Python—focused on real-world usability,
-            great UI, and solid engineering.
-          </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a
-              href="#projects"
-              style={{
-                background: "black",
-                color: "white",
-                padding: "10px 14px",
-                borderRadius: 10,
-                textDecoration: "none",
-                fontWeight: 600,
-              }}
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              style={{
-                border: "1px solid #ddd",
-                padding: "10px 14px",
-                borderRadius: 10,
-                textDecoration: "none",
-                fontWeight: 600,
-              }}
-            >
-              Contact
-            </a>
-          </div>
-        </header>
+            <div className="flex items-center gap-3">
+              <div className="hidden sm:flex items-center gap-5 text-sm text-zinc-600 dark:text-zinc-300">
+                <a className="hover:text-zinc-900 dark:hover:text-white" href="#projects">
+                  Projects
+                </a>
+                <a className="hover:text-zinc-900 dark:hover:text-white" href="#skills">
+                  Skills
+                </a>
+                <a className="hover:text-zinc-900 dark:hover:text-white" href="#about">
+                  About
+                </a>
+                <a className="hover:text-zinc-900 dark:hover:text-white" href="#contact">
+                  Contact
+                </a>
+              </div>
 
-        {/* PROJECTS */}
-        <section id="projects" style={{ padding: "32px 0" }}>
-          <h2 style={{ margin: "0 0 14px" }}>Featured Projects</h2>
+              <button
+                type="button"
+                onClick={() => setDark((v) => !v)}
+                className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold shadow-sm
+                           hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+                aria-label="Toggle dark mode"
+              >
+                {dark ? "Light" : "Dark"}
+              </button>
+            </div>
+          </nav>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
-            <ProjectCard
-              title="Budget App (Flagship)"
-              description="A production-ready budget tracking app built with React, focused on usability, clean UI, and maintainable state management. Supports categorized expenses, summaries, and visual breakdowns, with a roadmap toward a full-stack architecture."
-              tech="React • JS • LocalStorage • Charts"
-              links={[
-                { label: "Live Demo", href: "https://budget-app-lake-omega.vercel.app" },
-                { label: "GitHub", href: "https://github.com/mikedevpro/budget_app" },
-              ]}
-            />
-            <ProjectCard
-              title="Python Analytics (Companion)"
-              description="Data cleanup + insights for spending trends. Built to integrate with the Budget App backend later."
-              tech="Python • Pandas • CSV/JSON"
-              links={[
-                { label: "GitHub", href: "#" },
-              ]}
-            />
-            <ProjectCard
-              title="PSD/Figma to HTML Practice"
-              description="Pixel-tight layouts, responsive components, and clean CSS—built like client work."
-              tech="HTML • CSS • JS"
-              links={[
-                { label: "GitHub", href: "#" },
-              ]}
-            />
-          </div>
+          {/* HERO */}
+          <header className="mt-12">
+            <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm
+                            dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              Available for junior/full-stack roles
+            </div>
 
-          <p style={{ marginTop: 12, fontSize: 14, opacity: 0.75 }}>
-            Replace the “#” links with your actual live + repo links when ready.
-          </p>
-        </section>
+            <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight">
+              Full-Stack Web Developer
+            </h1>
 
-        {/* SKILLS */}
-        <section id="skills" style={{ padding: "32px 0" }}>
-          <h2 style={{ margin: "0 0 14px" }}>Skills</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
-            <SkillBlock title="Frontend" items={["React", "JavaScript", "HTML", "CSS", "Context API", "Axios"]} />
-            <SkillBlock title="Backend" items={["Python", "FastAPI (learning/building)", "REST APIs", "SQLite (future)"]} />
-            <SkillBlock title="Tools" items={["Git/GitHub", "Vercel", "VS Code", "Postman", "Jest (basics)"]} />
-          </div>
-        </section>
+            <p className="mt-4 max-w-2xl text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              I build clean, user-friendly web apps with React and Python—focused on practical features,
+              thoughtful UI, and readable code.
+            </p>
 
-        {/* ABOUT */}
-        <section id="about" style={{ padding: "32px 0" }}>
-          <h2 style={{ margin: "0 0 14px" }}>About</h2>
-          <p style={{ maxWidth: 760, lineHeight: 1.6, opacity: 0.9 }}>
-            I’m Mike — transitioning into web development from logistics and transportation.
-            I like building practical apps that people actually use, with an emphasis on clean UI and readable code.
-            My current flagship project is a Budget App, and I’m expanding into Python to go full-stack.
-          </p>
-        </section>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                className="rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow
+                           hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              >
+                View Projects
+              </a>
+              <a
+                href="#contact"
+                className="rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm
+                           hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+              >
+                Contact
+              </a>
+            </div>
+          </header>
 
-        {/* CONTACT */}
-        <section id="contact" style={{ padding: "32px 0 56px" }}>
-          <h2 style={{ margin: "0 0 14px" }}>Contact</h2>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:Mnobles33@gmail.com">Mnobles33@gmail.com</a>
-            <span style={{ opacity: 0.5 }}>|</span>
-            <a href="https://linkedin.com/in/michael-nobles-0242b014b" target="_blank" rel="noreferrer">LinkedIn</a>
-            <span style={{ opacity: 0.5 }}>|</span>
-            <a href="https://github.com/mikedevpro" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-          <p style={{ marginTop: 12, fontSize: 13, opacity: 0.7 }}>
-            Tip: Use a real email + your LinkedIn/GitHub links here. That’s the #1 recruiter path.
-          </p>
-        </section>
+          {/* PROJECTS */}
+          <section id="projects" className="mt-14">
+            <h2 className="text-xl font-bold tracking-tight">Featured Projects</h2>
 
-        <footer style={{ borderTop: "1px solid #eee", paddingTop: 16, fontSize: 13, opacity: 0.7 }}>
-          © {new Date().getFullYear()} Mike Nobles
-        </footer>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <ProjectCard
+                title="Budget App (Flagship)"
+                description="Expense tracking with categories, summaries, and charts. Built as a frontend-first product with a roadmap to expand full-stack."
+                tech={["React", "JavaScript", "LocalStorage", "Charts"]}
+                links={[
+                  { label: "Live Demo", href: "https://budget-app-lake-omega.vercel.app/" },
+                  { label: "GitHub", href: "https://github.com/mikedevpro/budget_app" },
+                ]}
+              />
+              <ProjectCard
+                title="Python Analytics (Companion)"
+                description="A lightweight analytics tool to explore spending trends—built to integrate with the Budget App later."
+                tech={["Python", "Pandas", "CSV/JSON"]}
+                links={[{ label: "GitHub", href: "#" }]}
+              />
+              <ProjectCard
+                title="PSD/Figma to HTML Practice"
+                description="Pixel-tight layouts and responsive components built like client work."
+                tech={["HTML", "CSS", "JavaScript"]}
+                links={[{ label: "GitHub", href: "#" }]}
+              />
+            </div>
+
+            <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+              Replace the “#” links when you’re ready.
+            </p>
+          </section>
+
+          {/* SKILLS */}
+          <section id="skills" className="mt-14">
+            <h2 className="text-xl font-bold tracking-tight">Skills</h2>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <InfoCard title="Frontend" items={["React", "JavaScript", "HTML", "CSS", "Context API", "Axios"]} />
+              <InfoCard title="Backend" items={["Python", "FastAPI (building)", "REST APIs"]} />
+              <InfoCard title="Tools" items={["Git/GitHub", "Vercel", "VS Code", "Postman", "Jest (basics)"]} />
+            </div>
+          </section>
+
+          {/* ABOUT */}
+          <section id="about" className="mt-14">
+            <h2 className="text-xl font-bold tracking-tight">About</h2>
+            <div className="mt-5 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm
+                            dark:border-zinc-800 dark:bg-zinc-900">
+              <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                I’m Mike — transitioning into web development from logistics and transportation.
+                I like building practical apps that people actually use, with an emphasis on clean UI and maintainable code.
+                My current flagship project is a Budget App, and I’m expanding into Python to go full-stack.
+              </p>
+            </div>
+          </section>
+
+          {/* CONTACT */}
+          <section id="contact" className="mt-14 mb-10">
+            <h2 className="text-xl font-bold tracking-tight">Contact</h2>
+
+            <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-zinc-600 dark:text-zinc-300">
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="mailto:you@example.com">
+                you@example.com
+              </a>
+              <span className="text-zinc-400">•</span>
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="#" target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+              <span className="text-zinc-400">•</span>
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="#" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </div>
+
+            <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+              Swap in your real email + profile links and you’re recruiter-ready.
+            </p>
+          </section>
+
+          <footer className="border-t border-zinc-200 pt-6 text-xs text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+            © {new Date().getFullYear()} Mike Nobles
+          </footer>
+        </div>
       </div>
     </div>
   );
@@ -133,13 +172,33 @@ export default function App() {
 
 function ProjectCard({ title, description, tech, links }) {
   return (
-    <div style={{ border: "1px solid #eee", borderRadius: 14, padding: 16 }}>
-      <div style={{ fontWeight: 800, marginBottom: 6 }}>{title}</div>
-      <div style={{ fontSize: 14, lineHeight: 1.5, opacity: 0.85 }}>{description}</div>
-      <div style={{ marginTop: 10, fontSize: 13, opacity: 0.75 }}>{tech}</div>
-      <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
+    <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition
+                    hover:-translate-y-0.5 hover:shadow-md
+                    dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="text-base font-extrabold tracking-tight">{title}</div>
+      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{description}</p>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {tech.map((t) => (
+          <span
+            key={t}
+            className="rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-semibold text-zinc-700
+                       dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
         {links.map((l) => (
-          <a key={l.label} href={l.href} target="_blank" rel="noreferrer">
+          <a
+            key={l.label}
+            href={l.href}
+            target="_blank"
+            rel="noreferrer"
+            className="text-zinc-900 hover:underline dark:text-white"
+          >
             {l.label}
           </a>
         ))}
@@ -148,13 +207,17 @@ function ProjectCard({ title, description, tech, links }) {
   );
 }
 
-function SkillBlock({ title, items }) {
+function InfoCard({ title, items }) {
   return (
-    <div style={{ border: "1px solid #eee", borderRadius: 14, padding: 16 }}>
-      <div style={{ fontWeight: 800, marginBottom: 8 }}>{title}</div>
-      <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7, opacity: 0.9 }}>
+    <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm
+                    dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="font-extrabold tracking-tight">{title}</div>
+      <ul className="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
         {items.map((i) => (
-          <li key={i}>{i}</li>
+          <li key={i} className="flex items-start gap-2">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-400" />
+            <span>{i}</span>
+          </li>
         ))}
       </ul>
     </div>
