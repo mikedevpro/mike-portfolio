@@ -51,21 +51,17 @@ export default function BudgetAppCaseStudy({ dark, setDark }) {
         </section>
 
         <section className="mt-10">
-          <h2 className="text-xl font-bold">Problem</h2>
+          <h2 className="text-xl font-bold">Challenge</h2>
           <p className="mt-3 text-zinc-700 dark:text-zinc-300 leading-relaxed">
-            Many budgeting tools feel overwhelming or require unnecessary setup. I wanted to create an app
-            that lets users quickly add expenses, categorize spending, and understand where their money goes.
+            Many budgeting apps overwhelm users with too many steps or features upfront. I wanted to solve a simpler problem first: help users quickly log expenses, categorize them, and immediately understand where their money is going—without friction or setup overhead.
           </p>
         </section>
 
         <section className="mt-10">
           <h2 className="text-xl font-bold">Solution</h2>
-          <ul className="mt-3 list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-300">
-            <li>Simple expense entry with validation</li>
-            <li>Category-based filtering and summaries</li>
-            <li>Persistent data storage using LocalStorage</li>
-            <li>Clear visual breakdowns for spending insights</li>
-          </ul>
+          <p className="mt-3 list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-300">
+            I built a focused, frontend-first budgeting application using React. The app prioritizes fast expense entry, clear categorization, and instant feedback through summaries and visual breakdowns. I intentionally designed the architecture to be simple but extensible, so it can grow into a full-stack application without requiring a major rewrite.
+          </p>
         </section>
 
         <section className="mt-10">
