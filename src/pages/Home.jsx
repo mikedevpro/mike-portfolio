@@ -116,7 +116,7 @@ export default function Home({ dark, setDark }) {
 
        <div className="flex flex-wrap items-center gap-6 text-sm">
        <a
-         href="mailto:you@example.com"
+         href="Mnobles33@gmail.com"
          className="group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2
                text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900
                dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white"
@@ -127,7 +127,7 @@ export default function Home({ dark, setDark }) {
     </a>
 
   <a
-    href="https://www.linkedin.com/in/YOUR_LINKEDIN"
+    href="linkedin.com/in/michael-nobles-0242b014b"
     target="_blank"
     rel="noreferrer"
     className="group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2
