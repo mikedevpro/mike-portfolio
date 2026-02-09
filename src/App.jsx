@@ -143,15 +143,15 @@ export default function App() {
             <h2 className="text-xl font-bold tracking-tight">Contact</h2>
 
             <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-zinc-600 dark:text-zinc-300">
-              <a className="hover:text-zinc-900 dark:hover:text-white" href="mailto:you@example.com">
-                you@example.com
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="mailto:Mnobles33@gmail.com">
+                Mnobles33@gmail.com
               </a>
               <span className="text-zinc-400">•</span>
-              <a className="hover:text-zinc-900 dark:hover:text-white" href="#" target="_blank" rel="noreferrer">
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="https://www.linkedin.com/in/michael-nobles-0242b014b" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
               <span className="text-zinc-400">•</span>
-              <a className="hover:text-zinc-900 dark:hover:text-white" href="#" target="_blank" rel="noreferrer">
+              <a className="hover:text-zinc-900 dark:hover:text-white" href="https://github.com/mikedevpro" target="_blank" rel="noreferrer">
                 GitHub
               </a>
             </div>
