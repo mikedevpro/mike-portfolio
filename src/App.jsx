@@ -16,7 +16,7 @@ export default function App() {
         <div className="mx-auto max-w-5xl px-5 py-10">
           {/* NAV */}
           <nav className="flex items-center justify-between">
-            <div className="font-extrabold tracking-tight text-lg">Mike Nobles</div>
+            <div className="font-extrabold tracking-tight text-lg">Michael Nobles</div>
 
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex items-center gap-5 text-sm text-zinc-600 dark:text-zinc-300">
