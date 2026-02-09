@@ -129,7 +129,7 @@ export default function Home({ dark, setDark }) {
             <div className="mt-5 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm
                             dark:border-zinc-800 dark:bg-zinc-900">
               <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                I’m Mike, a web developer transitioning into software development after working in logistics and transportation.
+                I’m Michael, a web developer transitioning into software development after working in logistics and transportation.
                 That experience shaped how I approach development: prioritizing reliability, clarity, and real-world usability.
                 <br /><br />
                 I enjoy building practical applications that people can actually use, with a focus on clean UI, readable code,
