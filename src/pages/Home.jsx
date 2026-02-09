@@ -1,6 +1,6 @@
 import Layout from "../components/Layout.jsx";
 import { Link } from "react-router-dom";
-import { Mail, Linkedin, Github, ArrowUpRight, BookOpen, ExternalLink } from "lucide-react";
+import { Mail, Linkedin, Github, ArrowUpRight, BookOpen, ExternalLink, Code2, Database, BarChart3, LayoutDashboard, Server, Shield, } from "lucide-react";
 
 
 export default function Home({ dark, setDark }) {
@@ -50,6 +50,7 @@ export default function Home({ dark, setDark }) {
             description="A production-ready budget tracking application that allows users to log expenses, categorize spending, and view summaries and visual insights."
             focus="State management, clean component structure, user-friendly forms, and data persistence."
             tech={["React", "JavaScript", "LocalStorage", "Charts"]}
+            icons={[LayoutDashboard, BarChart3, Database]}
             links={[
               { label: "Case Study", href: "/budget-app", icon: BookOpen },
               { label: "Live Demo", href: "https://budget-app-lake-omega.vercel.app/", icon: ExternalLink },
@@ -64,6 +65,7 @@ export default function Home({ dark, setDark }) {
             focus="Data cleaning, summaries, and a clear path toward future API integration."
             tech={["Python", "Pandas", "CSV/JSON"]}
             links={[{ label: "GitHub", href: "#" }]}
+            icons={[BarChart3, Database, Code2]}
           />
 
           <ProjectCard
@@ -72,6 +74,7 @@ export default function Home({ dark, setDark }) {
             focus="Responsive layout, clean CSS structure, and accessibility basics."
             tech={["HTML", "CSS", "JavaScript"]}
             links={[{ label: "GitHub", href: "#" }]}
+            icons={[LayoutDashboard, Code2]}
           />
         </div>
       </section>
@@ -157,13 +160,29 @@ export default function Home({ dark, setDark }) {
   );
 }
 
-function ProjectCard({ title, description, focus, tech, links }) {
+function ProjectCard({ title, description, focus, tech, links, icons }) {
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition
                     hover:-translate-y-0.5 hover:shadow-md
                     dark:border-zinc-800 dark:bg-zinc-900">
       <div className="text-base font-extrabold tracking-tight">{title}</div>
       <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{description}</p>
+
+      {icons?.length ? (
+  <div className="mt-3 flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+    {icons.map((Icon, idx) => (
+      <span
+        key={idx}
+        className="inline-flex items-center rounded-lg border border-zinc-200 bg-zinc-50 p-1.5
+                   dark:border-zinc-800 dark:bg-zinc-950"
+        aria-hidden="true"
+      >
+        <Icon className="h-4 w-4" />
+      </span>
+    ))}
+  </div>
+) : null}
+
 
       <p className="mt-3 text-sm font-medium text-zinc-700 dark:text-zinc-300">
         <span className="font-semibold">Focus:</span> {focus}
@@ -182,18 +201,41 @@ function ProjectCard({ title, description, focus, tech, links }) {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
-  {links.map((l) =>
-    l.href.startsWith("/") ? (
-      <Link
-        key={l.label}
-        to={l.href}
-        className="group inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2
-                   text-zinc-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-50
-                   dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900"
-      >
+  {links.map((l) => {
+    const isInternal = l.href.startsWith("/");
+    const isExternal = !isInternal;
+
+    const commonClass =
+      "group relative inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 " +
+      "text-zinc-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-50 " +
+      "dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900 " +
+      "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600";
+
+    const Tooltip = () =>
+      isExternal ? (
+        <span
+          className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap
+                     rounded-lg border border-zinc-200 bg-white px-2 py-1 text-xs font-semibold text-zinc-700
+                     opacity-0 shadow-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100
+                     dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"
+          role="tooltip"
+        >
+          Open in new tab
+        </span>
+      ) : null;
+
+    const Content = () => (
+      <>
         {l.icon ? <l.icon className="h-4 w-4" /> : null}
         <span>{l.label}</span>
-        <ArrowUpRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" />
+        <ArrowUpRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5 group-focus-visible:opacity-100" />
+        <Tooltip />
+      </>
+    );
+
+    return isInternal ? (
+      <Link key={l.label} to={l.href} className={commonClass}>
+        <Content />
       </Link>
     ) : (
       <a
@@ -201,17 +243,14 @@ function ProjectCard({ title, description, focus, tech, links }) {
         href={l.href}
         target="_blank"
         rel="noreferrer"
-        className="group inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2
-                   text-zinc-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-50
-                   dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900"
+        className={commonClass}
       >
-        {l.icon ? <l.icon className="h-4 w-4" /> : null}
-        <span>{l.label}</span>
-        <ArrowUpRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" />
+        <Content />
       </a>
-    )
-  )}
+    );
+  })}
 </div>
+
 
     </div>
   );
