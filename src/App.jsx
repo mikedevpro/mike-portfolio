@@ -17,7 +17,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home dark={dark} setDark={setDark} />} />
-        <Route path="/budget-app" element={<BudgetAppCaseStudy />} />
+        <Route path="/budget-app" element={<BudgetAppCaseStudy dark={dark} setDark={setDark} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
