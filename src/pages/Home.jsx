@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import { Mail, Linkedin, Github, ArrowUpRight, BookOpen, ExternalLink, Code2, Database, BarChart3, LayoutDashboard, Server, Shield, } from "lucide-react";
 
 
-export default function Home({ dark, setDark }) {
+export default function Home({ dark, setDark, speed, setSpeed }) {
   return (
-    <Layout dark={dark} setDark={setDark}>
+    <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed}>
       {/* HERO */}
       <header>
-        <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm
+        <div className="brand-glow inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm
                         dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
           🚀 Live projects deployed with Vercel
         </div>
 
-        <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight">
+        <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight brand-gradient">
           Full-Stack Web Developer building production-ready web apps with React and Python
         </h1>
 
@@ -21,6 +21,12 @@ export default function Home({ dark, setDark }) {
           I build clean, user-friendly web applications focused on real-world usability, clear UI,
           and maintainable code.
         </p>
+        <div className="mt-4 wheel-pill">
+          <span className="wheel-dot" aria-hidden="true" />
+          <span className="text-sm text-zinc-600 dark:text-zinc-300">
+            Built with momentum — powered by curiosity (and roller skates).
+          </span>
+        </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
           <a
@@ -60,7 +66,7 @@ export default function Home({ dark, setDark }) {
           />
 
           <ProjectCard
-            title="Python Spending Analytics (Companion)"
+            title="Python Spending Analytics (Budget App Companion)"
             description="A lightweight Python analytics project designed to explore and summarize spending data."
             focus="Data cleaning, summaries, and a clear path toward future API integration."
             tech={["Python", "Pandas", "CSV/JSON"]}
@@ -116,25 +122,25 @@ export default function Home({ dark, setDark }) {
 
        <div className="flex flex-wrap items-center gap-6 text-sm">
        <a
-         href="Mnobles33@gmail.com"
+         href="mailto:mnobles33@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Mike%2C%0A%0AI%20saw%20your%20portfolio%20and..."
          className="group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2
                text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900
                dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white"
         >
-        <Mail className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6" />
+        <Mail className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover-boost" />
         <span className="hidden sm:inline">Email</span>
         <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
     </a>
 
   <a
-    href="linkedin.com/in/michael-nobles-0242b014b"
+    href="https://www.linkedin.com/in/michael-nobles-0242b014b/overlay/contact-info/"
     target="_blank"
     rel="noreferrer"
     className="group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2
                text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900
                dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white"
   >
-    <Linkedin className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6" />
+    <Linkedin className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover-boost" />
     <span className="hidden sm:inline">LinkedIn</span>
     <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
   </a>
@@ -147,7 +153,7 @@ export default function Home({ dark, setDark }) {
                text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900
                dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white"
   >
-    <Github className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6" />
+    <Github className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover-boost" />
     <span className="hidden sm:inline">GitHub</span>
     <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
   </a>
@@ -162,7 +168,7 @@ export default function Home({ dark, setDark }) {
 
 function ProjectCard({ title, description, focus, tech, links, icons }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition
+    <div className="neon-card motion-shimmer rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition
                     hover:-translate-y-0.5 hover:shadow-md
                     dark:border-zinc-800 dark:bg-zinc-900">
       <div className="text-base font-extrabold tracking-tight">{title}</div>
@@ -206,7 +212,7 @@ function ProjectCard({ title, description, focus, tech, links, icons }) {
     const isExternal = !isInternal;
 
     const commonClass =
-      "group relative inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 " +
+      "motion-shimmer group relative inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 " +
       "text-zinc-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-50 " +
       "dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900 " +
       "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600";

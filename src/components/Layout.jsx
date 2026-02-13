@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
+import SkateBackdrop from "./SkateBackdrop.jsx";
 
-export default function Layout({ dark, setDark, children }) {
+export default function Layout({ dark, setDark, speed, setSpeed, children }) {
   return (
     <div className={dark ? "dark" : ""}>
-      <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
-        <div className="mx-auto max-w-5xl px-5 py-10">
+      <div className={`min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 relative ${speed ? "speed-mode" : ""}`}>
+        <SkateBackdrop />
+        <div className="relative mx-auto max-w-5xl px-5 py-10">
           {/* NAV */}
           <nav className="flex items-center justify-between">
-            <Link to="/" className="font-extrabold tracking-tight text-lg">
-              Michael Nobles
+            <Link to="/" className="font-extrabold tracking-tight text-lg speed-underline roll-skate">
+              <span>Michael Nobles</span>
+              <span className="skate" aria-hidden="true">🛼</span>
             </Link>
 
             <div className="flex items-center gap-3">
@@ -35,6 +38,16 @@ export default function Layout({ dark, setDark, children }) {
                 aria-label="Toggle dark mode"
               >
                 {dark ? "Light" : "Dark"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setSpeed((v) => !v)}
+                className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold shadow-sm
+                           hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+                aria-label="Toggle speed mode"
+                title="Speed mode"
+              >
+                {speed ? "Speed: On" : "Speed: Off"}
               </button>
             </div>
           </nav>

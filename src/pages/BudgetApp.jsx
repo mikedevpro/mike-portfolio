@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 
-export default function BudgetAppCaseStudy({ dark, setDark }) {
+export default function BudgetAppCaseStudy({ dark, setDark, speed, setSpeed }) {
   return (
-    <Layout dark={dark} setDark={setDark}>
+    <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed}>
       <div className="mx-auto max-w-4xl">
         <Link
           to="/"

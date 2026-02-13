@@ -1,0 +1,149 @@
+/* ---------- Brand basics ---------- */
+:root{
+  --accent1:#60a5fa; /* ice blue */
+  --accent2:#22c55e; /* neon green */
+  --accent3:#a78bfa; /* violet */
+}
+
+.brand-gradient{
+  background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* Subtle neon glow behind hero badge */
+.brand-glow{ position:relative; }
+.brand-glow::before{
+  content:"";
+  position:absolute;
+  inset:-14px;
+  border-radius:9999px;
+  background:
+    radial-gradient(circle at 25% 35%, rgba(96,165,250,.28), transparent 55%),
+    radial-gradient(circle at 75% 35%, rgba(34,197,94,.22), transparent 60%),
+    radial-gradient(circle at 55% 85%, rgba(167,139,250,.22), transparent 60%);
+  filter: blur(12px);
+  z-index:-1;
+}
+
+/* Speed underline on your name */
+.speed-underline{ position:relative; display:inline-block; }
+.speed-underline::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  height:3px;
+  width:100%;
+  border-radius:9999px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+  transform: scaleX(.35);
+  transform-origin:left;
+  transition: transform 220ms ease;
+  opacity:.9;
+}
+.speed-underline:hover::after{ transform: scaleX(1); }
+
+/* Neon edge hover for cards */
+.neon-card{ position:relative; }
+.neon-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:18px;
+  background: linear-gradient(90deg, rgba(96,165,250,.35), rgba(34,197,94,.25), rgba(167,139,250,.35));
+  opacity:0;
+  transition: opacity 180ms ease;
+  z-index:-1;
+}
+.neon-card:hover::before{ opacity:1; }
+
+/* ---------- Playful skate details ---------- */
+
+/* A tiny “wheel” pill for your signature row */
+.wheel-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.45rem .75rem;
+  border-radius:9999px;
+  border:1px solid rgb(228 228 231);
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(6px);
+}
+.dark .wheel-pill{
+  border-color: rgb(39 39 42);
+  background: rgba(24,24,27,.6);
+}
+
+/* Little “wheel” dot */
+.wheel-dot{
+  width:10px; height:10px;
+  border-radius:9999px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+  box-shadow: 0 0 16px rgba(96,165,250,.35);
+}
+
+/* Motion shimmer for hoverable items (super subtle) */
+.motion-shimmer{
+  position:relative;
+  overflow:hidden;
+}
+.motion-shimmer::after{
+  content:"";
+  position:absolute;
+  inset:-40% -80%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.14),
+    transparent
+  );
+  transform: rotate(12deg) translateX(-40%);
+  opacity:0;
+  transition: opacity 180ms ease;
+}
+.dark .motion-shimmer::after{
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.08),
+    transparent
+  );
+}
+.motion-shimmer:hover::after{ opacity:1; animation: shimmer 900ms ease; }
+
+@keyframes shimmer{
+  0% { transform: rotate(12deg) translateX(-50%); }
+  100% { transform: rotate(12deg) translateX(55%); }
+}
+/* Rolling skate easter egg */
+.roll-skate {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.roll-skate .skate {
+  display: inline-flex;
+  transition: transform 220ms ease;
+  transform: translateX(0);
+}
+.roll-skate:hover .skate {
+  transform: translateX(6px) rotate(2deg);
+}
+
+/* Speed mode increases hover motion slightly */
+.speed-mode .motion-shimmer:hover::after {
+  animation-duration: 650ms;
+}
+
+.speed-mode .neon-card:hover {
+  transform: translateY(-3px);
+}
+
+.speed-mode .neon-card:hover::before {
+  opacity: 1;
+}
+
+.speed-mode .group-hover-boost {
+  transform: translateY(-1px) rotate(8deg);
+}
