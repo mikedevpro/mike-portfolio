@@ -82,6 +82,18 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
             links={[{ label: "GitHub", href: "#" }]}
             icons={[LayoutDashboard, Code2]}
           />
+
+          <ProjectCard
+            title="Risk Zone (Real-Time Canvas Game)"
+            description="A fast, responsive portfolio focused on clean UX, polished motion, and reusable UI patterns."
+            focus="Component reuse, visual consistency, accessibility, and iterative design improvements."
+            tech={["React", "Tailwind CSS", "JavaScript", "Vite"]}
+            links={[
+              { label: "Live Demo", href: "https://risk-zone.vercel.app/" },
+              { label: "GitHub", href: "https://github.com/mikedevpro/risk-zone" },
+            ]}
+            icons={[LayoutDashboard, Code2, Shield]}
+          />
         </div>
       </section>
 
