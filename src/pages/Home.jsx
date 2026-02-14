@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 
 const PROJECT_LINK_CLASS =
-  "group relative z-10 inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 " +
-  "text-zinc-900 shadow-sm transition " +
+  "tap-fast group relative z-10 inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 " +
+  "text-zinc-900 shadow-sm transition-colors duration-100 " +
   "dark:border-zinc-800 dark:bg-zinc-950 dark:text-white " +
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600";
 const PROJECT_LINK_DISABLED_CLASS =
@@ -25,7 +25,7 @@ const PROJECT_LINK_DISABLED_CLASS =
   "text-zinc-500 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-400";
 
 const CONTACT_LINK_CLASS =
-  "btn-polish group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2 " +
+  "btn-polish tap-fast group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2 " +
   "text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900 " +
   "dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white";
 
@@ -151,13 +151,13 @@ function Home({ dark, setDark, speed, setSpeed }) {
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="#projects"
-            className="btn-polish rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="btn-polish tap-fast rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="btn-polish rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+            className="btn-polish tap-fast rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
           >
             Contact
           </a>

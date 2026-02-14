@@ -152,7 +152,7 @@
 /* Button/link hover polish */
 .btn-polish {
   transition-property: transform, box-shadow, background-color, border-color, color, opacity;
-  transition-duration: 220ms;
+  transition-duration: 140ms;
   transition-timing-function: cubic-bezier(.22, 1, .36, 1);
   will-change: transform, box-shadow;
 }
@@ -170,7 +170,12 @@
 
 .btn-polish:active {
   transform: translateY(0) scale(.985);
-  transition-duration: 120ms;
+  transition-duration: 80ms;
+}
+
+.tap-fast {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .speed-mode .btn-polish:hover,
