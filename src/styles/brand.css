@@ -94,6 +94,7 @@
   content:"";
   position:absolute;
   inset:-40% -80%;
+  pointer-events:none;
   background: linear-gradient(90deg,
     transparent,
     rgba(255,255,255,.14),
