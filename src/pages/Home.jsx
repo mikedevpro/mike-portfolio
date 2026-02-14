@@ -66,7 +66,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
           />
 
           <ProjectCard
-            title="Python Spending Analytics (Budget App Companion)(Under Constuction)"
+            title="Python Spending Analytics (Budget App Companion)(Coming Soon!)"
             description="A lightweight Python analytics project designed to explore and summarize spending data."
             focus="Data cleaning, summaries, and a clear path toward future API integration."
             tech={["Python", "Pandas", "CSV/JSON"]}
