@@ -66,7 +66,7 @@ const PROJECTS = [
     description: "Pixel-tight layouts and responsive components built like client work.",
     focus: "Responsive layout, clean CSS structure, and accessibility basics.",
     tech: ["HTML", "CSS", "JavaScript"],
-    links: [{ label: "GitHub", href: "", icon: Github }],
+    links: [{ label: "GitHub", href: "https://github.com/mikedevpro/PSD-to-HTML-sample/tree/main", icon: Github }],
     icons: [LayoutDashboard, Code2],
   },
   {
