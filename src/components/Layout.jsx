@@ -69,7 +69,7 @@ export default function Layout({ dark, setDark, speed, setSpeed, children }) {
               <button
                 type="button"
                 onClick={toggleDark}
-                className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+                className="btn-polish rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
                 aria-label="Toggle dark mode"
                 title="Theme"
               >
@@ -79,7 +79,7 @@ export default function Layout({ dark, setDark, speed, setSpeed, children }) {
               <button
                 type="button"
                 onClick={toggleSpeed}
-                className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+                className="btn-polish rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
                 aria-label="Toggle speed mode"
                 title="Speed mode"
               >

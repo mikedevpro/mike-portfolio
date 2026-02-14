@@ -147,3 +147,45 @@
 .speed-mode .group-hover-boost {
   transform: translateY(-1px) rotate(8deg);
 }
+
+/* Button/link hover polish */
+.btn-polish {
+  transition-property: transform, box-shadow, background-color, border-color, color, opacity;
+  transition-duration: 220ms;
+  transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+  will-change: transform, box-shadow;
+}
+
+.btn-polish:hover,
+.btn-polish:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px -16px rgba(24, 24, 27, .45);
+}
+
+.dark .btn-polish:hover,
+.dark .btn-polish:focus-visible {
+  box-shadow: 0 12px 22px -16px rgba(0, 0, 0, .7);
+}
+
+.btn-polish:active {
+  transform: translateY(0) scale(.985);
+  transition-duration: 120ms;
+}
+
+.speed-mode .btn-polish:hover,
+.speed-mode .btn-polish:focus-visible {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-polish {
+    transition-duration: 0ms;
+  }
+
+  .btn-polish:hover,
+  .btn-polish:focus-visible,
+  .btn-polish:active {
+    transform: none;
+    box-shadow: none;
+  }
+}
