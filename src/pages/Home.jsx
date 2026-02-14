@@ -20,6 +20,9 @@ const PROJECT_LINK_CLASS =
   "text-zinc-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-50 " +
   "dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900 " +
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600";
+const PROJECT_LINK_DISABLED_CLASS =
+  "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-100/80 px-3 py-2 " +
+  "text-zinc-500 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-400";
 
 const CONTACT_LINK_CLASS =
   "btn-polish group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2 " +
@@ -55,7 +58,7 @@ const PROJECTS = [
       "A lightweight Python analytics project designed to explore and summarize spending data.",
     focus: "Data cleaning, summaries, and a clear path toward future API integration.",
     tech: ["Python", "Pandas", "CSV/JSON"],
-    links: [{ label: "GitHub", href: "#", icon: Github }],
+    links: [{ label: "GitHub", href: "", icon: Github }],
     icons: [BarChart3, Database, Code2],
   },
   {
@@ -63,7 +66,7 @@ const PROJECTS = [
     description: "Pixel-tight layouts and responsive components built like client work.",
     focus: "Responsive layout, clean CSS structure, and accessibility basics.",
     tech: ["HTML", "CSS", "JavaScript"],
-    links: [{ label: "GitHub", href: "#", icon: Github }],
+    links: [{ label: "GitHub", href: "", icon: Github }],
     icons: [LayoutDashboard, Code2],
   },
   {
@@ -226,9 +229,22 @@ function Home({ dark, setDark, speed, setSpeed }) {
 }
 
 function ProjectLink({ link }) {
-  const isInternal = link.href.startsWith("/");
-  const isExternal = isExternalHref(link.href);
-  const Icon = link.icon;
+  const isUnavailable = !link.href || link.href === "#";
+  const isInternal = !isUnavailable && link.href.startsWith("/");
+  const isExternal = !isUnavailable && isExternalHref(link.href);
+  const Icon = link.icon ?? ExternalLink;
+
+  if (isUnavailable) {
+    return (
+      <span className={PROJECT_LINK_DISABLED_CLASS} aria-disabled="true" title="Link coming soon">
+        <Icon className="h-4 w-4" />
+        <span>{link.label}</span>
+        <span className="rounded-full border border-zinc-300 px-1.5 py-0.5 text-[10px] uppercase tracking-wide dark:border-zinc-700">
+          Soon
+        </span>
+      </span>
+    );
+  }
 
   const content = (
     <>
@@ -311,6 +327,9 @@ const ProjectCard = memo(function ProjectCard({
       </div>
 
       <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
+        <p className="w-full text-[11px] font-bold uppercase tracking-[0.08em] text-zinc-500 dark:text-zinc-400">
+          Project Links
+        </p>
         {links.map((link) => (
           <MemoProjectLink key={`${link.label}-${link.href}`} link={link} />
         ))}
