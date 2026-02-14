@@ -293,7 +293,7 @@ const ProjectCard = memo(function ProjectCard({
   icons,
 }) {
   return (
-    <div className="neon-card motion-shimmer rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="neon-card card-polish motion-shimmer rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
       <div className="text-base font-extrabold tracking-tight">{title}</div>
       <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{description}</p>
 

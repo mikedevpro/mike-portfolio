@@ -40,7 +40,7 @@
   background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
   transform: scaleX(.35);
   transform-origin:left;
-  transition: transform 220ms ease;
+  transition: transform 140ms ease;
   opacity:.9;
 }
 .speed-underline:hover::after{ transform: scaleX(1); }
@@ -125,7 +125,7 @@
 }
 .roll-skate .skate {
   display: inline-flex;
-  transition: transform 220ms ease;
+  transition: transform 140ms ease;
   transform: translateX(0);
 }
 .roll-skate:hover .skate {
@@ -135,14 +135,6 @@
 /* Speed mode increases hover motion slightly */
 .speed-mode .motion-shimmer:hover::after {
   animation-duration: 650ms;
-}
-
-.speed-mode .neon-card:hover {
-  transform: translateY(-3px);
-}
-
-.speed-mode .neon-card:hover::before {
-  opacity: 1;
 }
 
 .speed-mode .group-hover-boost {
@@ -178,6 +170,41 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.card-polish {
+  transition-property: transform, box-shadow, border-color, background-color;
+  transition-duration: 140ms;
+  transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+  will-change: transform, box-shadow;
+  touch-action: manipulation;
+}
+
+.card-polish:hover,
+.card-polish:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px -20px rgba(24, 24, 27, .45);
+}
+
+.dark .card-polish:hover,
+.dark .card-polish:focus-within {
+  box-shadow: 0 16px 28px -20px rgba(0, 0, 0, .7);
+}
+
+.speed-mode .card-polish:hover,
+.speed-mode .card-polish:focus-within {
+  transform: translateY(-3px);
+}
+
+.nav-link-fast {
+  display: inline-flex;
+  align-items: center;
+  transition: color 100ms ease, transform 100ms ease;
+}
+
+.nav-link-fast:hover,
+.nav-link-fast:focus-visible {
+  transform: translateY(-1px);
+}
+
 .speed-mode .btn-polish:hover,
 .speed-mode .btn-polish:focus-visible {
   transform: translateY(-2px);
@@ -188,9 +215,22 @@
     transition-duration: 0ms;
   }
 
+  .card-polish,
+  .nav-link-fast {
+    transition-duration: 0ms;
+  }
+
   .btn-polish:hover,
   .btn-polish:focus-visible,
   .btn-polish:active {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .card-polish:hover,
+  .card-polish:focus-within,
+  .nav-link-fast:hover,
+  .nav-link-fast:focus-visible {
     transform: none;
     box-shadow: none;
   }

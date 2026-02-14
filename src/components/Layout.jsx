@@ -34,7 +34,7 @@ export default function Layout({ dark, setDark, speed, setSpeed, children }) {
           <nav className="flex items-center justify-between">
             <Link
               to="/"
-              className="font-extrabold tracking-tight text-lg speed-underline roll-skate"
+              className="tap-fast font-extrabold tracking-tight text-lg speed-underline roll-skate"
             >
               <span>Michael Nobles</span>
               <span className="skate" aria-hidden="true">
@@ -48,7 +48,7 @@ export default function Layout({ dark, setDark, speed, setSpeed, children }) {
                   {SECTION_LINKS.map((section) => (
                     <a
                       key={section.href}
-                      className="hover:text-zinc-900 dark:hover:text-white"
+                      className="tap-fast nav-link-fast hover:text-zinc-900 dark:hover:text-white"
                       href={section.href}
                     >
                       {section.label}
@@ -59,7 +59,7 @@ export default function Layout({ dark, setDark, speed, setSpeed, children }) {
                 <div className="hidden sm:block text-sm">
                   <Link
                     to="/"
-                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                    className="tap-fast nav-link-fast text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                   >
                     ← Back to Home
                   </Link>
