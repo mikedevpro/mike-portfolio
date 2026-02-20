@@ -144,8 +144,8 @@ const PLAYGROUND_ITEMS = [
     cta: "Launch Demo",
   },
   {
-    title: "Portfolio UI Controls",
-    description: "Theme and animation-speed toggles currently available on this page.",
+    title: "Fun Video Games",
+    description: "More fun experimental games coming soon!",
     icon: SlidersHorizontal,
     href: "#",
     cta: "More Experiments Soon",
