@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import BudgetAppCaseStudy from "./pages/BudgetApp.jsx";
+import RiskZoneCaseStudy from "./pages/RiskZone.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(() => {
@@ -25,6 +26,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="/budget-app" element={<BudgetAppCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
+        <Route path="/risk-zone" element={<RiskZoneCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

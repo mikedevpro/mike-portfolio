@@ -13,6 +13,9 @@ import {
   BarChart3,
   LayoutDashboard,
   Shield,
+  Gamepad2,
+  FlaskConical,
+  SlidersHorizontal,
 } from "lucide-react";
 
 const PROJECT_LINK_CLASS =
@@ -31,7 +34,25 @@ const CONTACT_LINK_CLASS =
 
 const PROJECTS = [
   {
-    title: "Budget App (Flagship)",
+    title: "Risk Zone - Full-Stack Arcade Survival Game (Video Game Showpiece)",
+    description:
+      "Real-time Canvas game engine with dynamic difficulty, boss waves, and a global leaderboard powered by FastAPI.",
+    focus:
+      "Component reuse, visual consistency, accessibility, and iterative design improvements.",
+    tech: ["React", "Canvas API", "FastAPI", "SQLAlchemy", "QLite", "Vercel", "Render"],
+    links: [
+      { label: "Case Study", href: "/risk-zone", icon: BookOpen},
+      { label: "Live Demo", href: "https://risk-zone.vercel.app/", icon: ExternalLink },
+      {
+        label: "GitHub",
+        href: "https://github.com/mikedevpro/risk-zone",
+        icon: Github,
+      },
+    ],
+    icons: [LayoutDashboard, Code2, Shield],
+  },
+  {
+    title: "Budget App (Full-Stack Flagship)",
     description:
       "A production-ready budget tracking application that allows users to log expenses, categorize spending, and view summaries and visual insights.",
     focus:
@@ -53,12 +74,12 @@ const PROJECTS = [
     ],
   },
   {
-    title: "Python Spending Analytics (Budget App Companion)(Coming Soon!)",
+    title: "Python Spending Analytics (Budget App Companion)",
     description:
       "A lightweight Python analytics project designed to explore and summarize spending data.",
     focus: "Data cleaning, summaries, and a clear path toward future API integration.",
     tech: ["Python", "Pandas", "CSV/JSON"],
-    links: [{ label: "GitHub", href: "", icon: Github }],
+    links: [{ label: "GitHub", href: "https://github.com/mikedevpro/budget_audit_cli.git", icon: Github }],
     icons: [BarChart3, Database, Code2],
   },
   {
@@ -72,23 +93,7 @@ const PROJECTS = [
     ],
     icons: [LayoutDashboard, Code2],
   },
-  {
-    title: "Risk Zone (Real-Time Canvas Game)",
-    description:
-      "A fast, responsive portfolio focused on clean UX, polished motion, and reusable UI patterns.",
-    focus:
-      "Component reuse, visual consistency, accessibility, and iterative design improvements.",
-    tech: ["React", "Tailwind CSS", "JavaScript", "Vite"],
-    links: [
-      { label: "Live Demo", href: "https://risk-zone.vercel.app/", icon: ExternalLink },
-      {
-        label: "GitHub",
-        href: "https://github.com/mikedevpro/risk-zone",
-        icon: Github,
-      },
-    ],
-    icons: [LayoutDashboard, Code2, Shield],
-  },
+  
 ];
 
 const SKILL_GROUPS = [
@@ -120,6 +125,30 @@ const CONTACT_LINKS = [
     href: "https://github.com/mikedevpro",
     icon: Github,
     external: true,
+  },
+];
+
+const PLAYGROUND_ITEMS = [
+  {
+    title: "Risk Zone Challenge",
+    description: "Fast reflex canvas game with score tracking and responsive controls.",
+    icon: Gamepad2,
+    href: "https://risk-zone.vercel.app/",
+    cta: "Play Now",
+  },
+  {
+    title: "Budget App Sandbox",
+    description: "Try the full budgeting workflow with categories, charts, and summaries.",
+    icon: FlaskConical,
+    href: "https://budget-app-lake-omega.vercel.app/",
+    cta: "Launch Demo",
+  },
+  {
+    title: "Portfolio UI Controls",
+    description: "Theme and animation-speed toggles currently available on this page.",
+    icon: SlidersHorizontal,
+    href: "#",
+    cta: "More Experiments Soon",
   },
 ];
 
@@ -172,6 +201,18 @@ function Home({ dark, setDark, speed, setSpeed }) {
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project) => (
             <ProjectCard key={project.title} {...project} />
+          ))}
+        </div>
+      </section>
+
+      <section id="playground" className="mt-14">
+        <h2 className="text-xl font-bold tracking-tight">Interactive Playground</h2>
+        <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-300">
+          Small interactive builds and hands-on demos that highlight UI behavior, state, and game-like interactions.
+        </p>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PLAYGROUND_ITEMS.map((item) => (
+            <PlaygroundCard key={item.title} {...item} />
           ))}
         </div>
       </section>
@@ -286,6 +327,39 @@ function ProjectLink({ link }) {
 }
 
 const MemoProjectLink = memo(ProjectLink);
+
+const PlaygroundCard = memo(function PlaygroundCard({ title, description, href, cta, icon: Icon }) {
+  const isUnavailable = !href || href === "#";
+  const isExternal = !isUnavailable && isExternalHref(href);
+
+  return (
+    <div className="neon-card rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="inline-flex items-center rounded-lg border border-zinc-200 bg-zinc-50 p-2 text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300">
+        <Icon className="h-4 w-4" />
+      </div>
+      <h3 className="mt-3 text-base font-extrabold tracking-tight">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{description}</p>
+
+      <div className="mt-5">
+        {isUnavailable ? (
+          <span className={PROJECT_LINK_DISABLED_CLASS} aria-disabled="true">
+            <span>{cta}</span>
+          </span>
+        ) : (
+          <a
+            href={href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            className={PROJECT_LINK_CLASS}
+          >
+            <span>{cta}</span>
+            <ArrowUpRight className="h-4 w-4 opacity-80" />
+          </a>
+        )}
+      </div>
+    </div>
+  );
+});
 
 const ProjectCard = memo(function ProjectCard({
   title,
