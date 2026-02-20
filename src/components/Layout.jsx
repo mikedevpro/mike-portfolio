@@ -6,12 +6,13 @@ const SECTION_LINKS = [
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
 ];
+const CONTACT_SECTION_LINK = { label: "Contact", href: "#contact" };
 
-export default function Layout({ dark, setDark, speed, setSpeed, children }) {
+export default function Layout({ dark, setDark, speed, setSpeed, showContact = true, children }) {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
+  const sectionLinks = showContact ? [...SECTION_LINKS, CONTACT_SECTION_LINK] : SECTION_LINKS;
 
   const toggleDark = useCallback(() => {
     setDark((value) => !value);
@@ -45,7 +46,7 @@ export default function Layout({ dark, setDark, speed, setSpeed, children }) {
             <div className="flex items-center gap-3">
               {isHome ? (
                 <div className="hidden sm:flex items-center gap-5 text-sm text-zinc-600 dark:text-zinc-300">
-                  {SECTION_LINKS.map((section) => (
+                  {sectionLinks.map((section) => (
                     <a
                       key={section.href}
                       className="tap-fast nav-link-fast hover:text-zinc-900 dark:hover:text-white"

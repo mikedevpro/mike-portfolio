@@ -71,7 +71,7 @@ export default function RiskZoneCaseStudy({ dark, setDark, speed, setSpeed }) {
         <section className="mt-10">
           <h2 className="text-xl font-bold">Tech Stack</h2>
           <p className="mt-3 text-zinc-700 dark:text-zinc-300">
-            React, JavaScript, HTML Canvas, CSS, Vite, Vercel, Render, SQLAlchemy, QLite
+            React, JavaScript, HTML Canvas, CSS, Vite, Vercel, Render, SQLAlchemy, SQLite
           </p>
         </section>
 

@@ -26,20 +26,22 @@ const PROJECT_LINK_CLASS =
 const PROJECT_LINK_DISABLED_CLASS =
   "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-100/80 px-3 py-2 " +
   "text-zinc-500 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-400";
-
 const CONTACT_LINK_CLASS =
   "btn-polish tap-fast group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2 " +
   "text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900 " +
   "dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white";
+const SHOW_CONTACT = false;
 
 const PROJECTS = [
   {
-    title: "Risk Zone - Full-Stack Arcade Survival Game (Video Game Showpiece)",
+    title: "Risk Zone - Full-Stack Arcade Survival Game",
     description:
       "Real-time Canvas game engine with dynamic difficulty, boss waves, and a global leaderboard powered by FastAPI.",
     focus:
       "Component reuse, visual consistency, accessibility, and iterative design improvements.",
-    tech: ["React", "Canvas API", "FastAPI", "SQLAlchemy", "QLite", "Vercel", "Render"],
+    outcome:
+      "Delivered a polished browser game demo with smooth controls, balanced progression, and public deployment.",
+    tech: ["React", "Canvas API", "FastAPI", "SQLAlchemy", "SQLite", "Vercel", "Render"],
     links: [
       { label: "Case Study", href: "/risk-zone", icon: BookOpen},
       { label: "Live Demo", href: "https://risk-zone.vercel.app/", icon: ExternalLink },
@@ -52,11 +54,13 @@ const PROJECTS = [
     icons: [LayoutDashboard, Code2, Shield],
   },
   {
-    title: "Budget App (Full-Stack Flagship)",
+    title: "Budget App - Full-Stack Expense Tracker",
     description:
       "A production-ready budget tracking application that allows users to log expenses, categorize spending, and view summaries and visual insights.",
     focus:
       "State management, clean component structure, user-friendly forms, and data persistence.",
+    outcome:
+      "Shipped a stable budgeting workflow with fast expense entry and clear spending insights for day-to-day use.",
     tech: ["React", "JavaScript", "LocalStorage", "Charts"],
     icons: [LayoutDashboard, BarChart3, Database],
     links: [
@@ -74,10 +78,12 @@ const PROJECTS = [
     ],
   },
   {
-    title: "Python Spending Analytics (Budget App Companion)",
+    title: "Python Spending Analytics - Backend Companion to Budget App",
     description:
       "A lightweight Python analytics project designed to explore and summarize spending data.",
     focus: "Data cleaning, summaries, and a clear path toward future API integration.",
+    outcome:
+      "Built reusable analysis scripts that speed up spending reviews and support future backend/API integration.",
     tech: ["Python", "Pandas", "CSV/JSON"],
     links: [{ label: "GitHub", href: "https://github.com/mikedevpro/budget_audit_cli.git", icon: Github }],
     icons: [BarChart3, Database, Code2],
@@ -86,10 +92,27 @@ const PROJECTS = [
     title: "PSD/Figma to HTML Practice",
     description: "Pixel-tight layouts and responsive components built like client work.",
     focus: "Responsive layout, clean CSS structure, and accessibility basics.",
+    outcome:
+      "Produced responsive mock-to-code builds that improved front-end precision and component consistency.",
     tech: ["HTML", "CSS", "JavaScript"],
     links: [
       { label: "Live Demo", href: "https://psdtohtml-sample.vercel.app", icon: ExternalLink },
       { label: "GitHub", href: "https://github.com/mikedevpro/PSD-to-HTML-sample/tree/main", icon: Github },
+    ],
+    icons: [LayoutDashboard, Code2],
+  },
+  {
+    title: "Photography Website",
+    description:
+      "A responsive photography portfolio website designed to showcase client work with clean visuals, fast performance, and an easy path to future business features.",
+    focus: "Build a professional, conversion-friendly portfolio for a working photographer, with a structure that can scale into a full business site.",
+    outcome:
+      "Launched a live portfolio that presents work professionally and provides a clear foundation for business expansion.",
+    tech: ["React", "Node", "TypeScript", "Next", "Tailwind CSS"],
+    links: [
+      { label: "Case Study", href: "/photography-website", icon: BookOpen },
+      { label: "Live Demo", href: "https://lancephotosite.vercel.app/", icon: ExternalLink },
+      { label: "GitHub", href: "https://github.com/mikedevpro/lance_photo_site", icon: Github },
     ],
     icons: [LayoutDashboard, Code2],
   },
@@ -158,7 +181,7 @@ function isExternalHref(href) {
 
 function Home({ dark, setDark, speed, setSpeed }) {
   return (
-    <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed}>
+    <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} showContact={SHOW_CONTACT}>
       <header>
         <div className="brand-glow inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
           🚀 Live projects deployed with Vercel
@@ -187,12 +210,14 @@ function Home({ dark, setDark, speed, setSpeed }) {
           >
             View Projects
           </a>
-          <a
-            href="#contact"
-            className="btn-polish tap-fast rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
-          >
-            Contact
-          </a>
+          {SHOW_CONTACT ? (
+            <a
+              href="#contact"
+              className="btn-polish tap-fast rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+            >
+              Contact
+            </a>
+          ) : null}
         </div>
       </header>
 
@@ -241,33 +266,35 @@ function Home({ dark, setDark, speed, setSpeed }) {
         </div>
       </section>
 
-      <section id="contact" className="mt-14">
-        <h2 className="text-xl font-bold tracking-tight">Contact</h2>
+      {SHOW_CONTACT ? (
+        <section id="contact" className="mt-14">
+          <h2 className="text-xl font-bold tracking-tight">Contact</h2>
 
-        <p className="mt-5 mb-4 text-sm text-zinc-600 dark:text-zinc-300">
-          Open to junior or early-mid full-stack roles and excited to contribute to real production teams.
-        </p>
+          <p className="mt-5 mb-4 text-sm text-zinc-600 dark:text-zinc-300">
+            Open to junior or early-mid full-stack roles and excited to contribute to real production teams.
+          </p>
 
-        <div className="flex flex-wrap items-center gap-6 text-sm">
-          {CONTACT_LINKS.map((contact) => {
-            const ContactIcon = contact.icon;
-            const isExternal = Boolean(contact.external);
-            return (
-              <a
-                key={contact.label}
-                href={contact.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className={CONTACT_LINK_CLASS}
-              >
-                <ContactIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover-boost" />
-                <span className="hidden sm:inline">{contact.label}</span>
-                <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
-              </a>
-            );
-          })}
-        </div>
-      </section>
+          <div className="flex flex-wrap items-center gap-6 text-sm">
+            {CONTACT_LINKS.map((contact) => {
+              const ContactIcon = contact.icon;
+              const isExternal = Boolean(contact.external);
+              return (
+                <a
+                  key={contact.label}
+                  href={contact.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className={CONTACT_LINK_CLASS}
+                >
+                  <ContactIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover-boost" />
+                  <span className="hidden sm:inline">{contact.label}</span>
+                  <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      ) : null}
     </Layout>
   );
 }
@@ -365,6 +392,7 @@ const ProjectCard = memo(function ProjectCard({
   title,
   description,
   focus,
+  outcome,
   tech,
   links,
   icons,
@@ -390,6 +418,9 @@ const ProjectCard = memo(function ProjectCard({
 
       <p className="mt-3 text-sm font-medium text-zinc-700 dark:text-zinc-300">
         <span className="font-semibold">Focus:</span> {focus}
+      </p>
+      <p className="mt-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        <span className="font-semibold">Outcome:</span> {outcome}
       </p>
 
       <div className="mt-4 flex flex-wrap gap-2">
