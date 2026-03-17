@@ -6,6 +6,7 @@ import RiskZoneCaseStudy from "./pages/RiskZone.jsx";
 import PhotographyWebsiteCaseStudy from "./pages/PhotographyWebsite.jsx";
 import LaunchPadAICaseStudy from "./pages/LaunchPadAI.jsx";
 import NorthstarAgencyCaseStudy from "./pages/NorthstarAgency.jsx";
+import LoadTrackerCaseStudy from "./pages/LoadTracker.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(() => {
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/photography-website" element={<PhotographyWebsiteCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="/launchpad-ai" element={<LaunchPadAICaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="/northstar-agency" element={<NorthstarAgencyCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
+        <Route path="/load-tracker" element={<LoadTrackerCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

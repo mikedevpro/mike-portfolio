@@ -156,6 +156,21 @@ const PROJECTS = [
     ],
     icons: [LayoutDashboard, LayoutDashboard, Code2],
   },
+  {
+    title: "Load Tracker",
+    description:
+      "A lightweight productivity-style project for tracking daily load and progress workflows.",
+    focus: "Data organization and clean UI flow planning for a clear, extensible dashboard-like experience.",
+    outcome:
+      "Designed the project structure to support a future launch with maintainable frontend architecture and scalable feature growth.",
+    tech: ["Coming Soon", "React", "Tailwind CSS"],
+    links: [
+      { label: "Case Study", href: "/load-tracker", icon: BookOpen },
+      { label: "Live Demo", href: "#", icon: ExternalLink },
+      { label: "GitHub", href: "#", icon: Github },
+    ],
+    icons: [LayoutDashboard, LayoutDashboard, Code2],
+  },
   
 ];
 
@@ -213,13 +228,13 @@ const PLAYGROUND_ITEMS = [
     href: "#",
     cta: "Coming Soon",
   },
-  {
-    title: "Fun Video Games",
-    description: "More fun experimental games coming soon!",
-    icon: SlidersHorizontal,
-    href: "#",
-    cta: "More Experiments Soon",
-  },
+  // {
+  //   title: "Fun Video Games",
+  //   description: "More fun experimental games coming soon!",
+  //   icon: SlidersHorizontal,
+  //   href: "#",
+  //   cta: "More Experiments Soon"
+  // },
 ];
 
 function isExternalHref(href) {
