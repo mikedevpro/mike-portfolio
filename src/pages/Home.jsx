@@ -151,7 +151,7 @@ const PROJECTS = [
     tech: ["React", "JavaScript", "Tailwind CSS", "Responsive Design", "Reusable Components"],
     links: [
       { label: "Case Study", href: "/northstar-agency", icon: BookOpen },
-      { label: "Live Demo (Coming Soon)", href: "#", icon: ExternalLink },
+      { label: "Live Demo", href: "https://northstar-agency.vercel.app/", icon: ExternalLink },
       { label: "GitHub", href: "https://github.com/mikedevpro/northstar-agency", icon: Github },
     ],
     icons: [LayoutDashboard, LayoutDashboard, Code2],

@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
+import { ExternalLink, Github, ArrowUpRight, ArrowLeft } from "lucide-react";
 import Layout from "../components/Layout.jsx";
+
+const CASE_STUDY_LINK_CLASS =
+  "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-semibold text-zinc-700 shadow-sm transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200";
+const BACK_LINK_CLASS =
+  "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-200";
 
 export default function BudgetAppCaseStudy({ dark, setDark, speed, setSpeed }) {
   return (
@@ -7,8 +13,9 @@ export default function BudgetAppCaseStudy({ dark, setDark, speed, setSpeed }) {
       <div className="mx-auto max-w-4xl">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-700 hover:underline dark:text-zinc-300"
+          className={BACK_LINK_CLASS}
         >
+          <ArrowLeft className="h-4 w-4" />
           ← Back to Home
         </Link>
 
@@ -26,17 +33,21 @@ export default function BudgetAppCaseStudy({ dark, setDark, speed, setSpeed }) {
             href="https://budget-app-lake-omega.vercel.app/"
             target="_blank"
             rel="noreferrer"
-            className="underline"
+            className={CASE_STUDY_LINK_CLASS}
           >
+            <ExternalLink className="h-4 w-4" />
             Live Demo
+            <ArrowUpRight className="h-4 w-4 opacity-80" />
           </a>
           <a
             href="https://github.com/mikedevpro/budget_app"
             target="_blank"
             rel="noreferrer"
-            className="underline"
+            className={CASE_STUDY_LINK_CLASS}
           >
+            <Github className="h-4 w-4" />
             GitHub Repository
+            <ArrowUpRight className="h-4 w-4 opacity-80" />
           </a>
         </div>
 
@@ -102,4 +113,3 @@ export default function BudgetAppCaseStudy({ dark, setDark, speed, setSpeed }) {
     </Layout>
   );
 }
-
