@@ -207,6 +207,13 @@ const PLAYGROUND_ITEMS = [
     cta: "Launch Demo",
   },
   {
+    title: "Apex Orbit",
+    description: "An interactive game experience centered around orbit control and responsive challenge loops.",
+    icon: Gamepad2,
+    href: "#",
+    cta: "Coming Soon",
+  },
+  {
     title: "Fun Video Games",
     description: "More fun experimental games coming soon!",
     icon: SlidersHorizontal,
