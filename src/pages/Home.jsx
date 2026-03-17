@@ -116,6 +116,46 @@ const PROJECTS = [
     ],
     icons: [LayoutDashboard, Code2],
   },
+  {
+    title: "LaunchPad AI - SaaS Landing Page",
+    description:
+      "LaunchPad AI is a front-end portfolio project designed to showcase modern landing page development for SaaS-style products.",
+    focus:
+      "Built with React and Tailwind CSS using reusable components and structured content data for maintainable, scalable UI, with mobile-first navigation and a polished responsive experience.",
+    outcome:
+      "Delivered a conversion-focused landing page featuring an animated FAQ accordion, subtle Framer Motion motion effects, and strong cross-device consistency.",
+    tech: ["React", "Tailwind CSS", "Framer Motion", "JavaScript"],
+    links: [
+      { label: "Case Study", href: "/launchpad-ai", icon: BookOpen },
+      {
+        label: "Live Demo",
+        href: "https://launchpad-ai-theta.vercel.app/",
+        icon: ExternalLink,
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/mikedevpro/launchpad-ai",
+        icon: Github,
+      },
+    ],
+    icons: [LayoutDashboard, Database, Code2],
+  },
+  {
+    title: "Figma to React Responsive Landing Page (Northstar Agency)",
+    description:
+      "Northstar Agency is a front-end portfolio project focused on translating a clean, modern design concept into a responsive React application.",
+    focus:
+      "Transforming a visual layout into structured reusable components while preserving hierarchy, spacing, and responsive behavior.",
+    outcome:
+      "Delivered a production-style landing page build with reusable section architecture and dependable cross-device consistency.",
+    tech: ["React", "JavaScript", "Tailwind CSS", "Responsive Design", "Reusable Components"],
+    links: [
+      { label: "Case Study", href: "/northstar-agency", icon: BookOpen },
+      { label: "Live Demo (Coming Soon)", href: "#", icon: ExternalLink },
+      { label: "GitHub", href: "https://github.com/mikedevpro/northstar-agency", icon: Github },
+    ],
+    icons: [LayoutDashboard, LayoutDashboard, Code2],
+  },
   
 ];
 

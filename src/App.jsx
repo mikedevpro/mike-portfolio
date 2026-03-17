@@ -4,6 +4,8 @@ import Home from "./pages/Home.jsx";
 import BudgetAppCaseStudy from "./pages/BudgetApp.jsx";
 import RiskZoneCaseStudy from "./pages/RiskZone.jsx";
 import PhotographyWebsiteCaseStudy from "./pages/PhotographyWebsite.jsx";
+import LaunchPadAICaseStudy from "./pages/LaunchPadAI.jsx";
+import NorthstarAgencyCaseStudy from "./pages/NorthstarAgency.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(() => {
@@ -29,6 +31,8 @@ export default function App() {
         <Route path="/budget-app" element={<BudgetAppCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="/risk-zone" element={<RiskZoneCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="/photography-website" element={<PhotographyWebsiteCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
+        <Route path="/launchpad-ai" element={<LaunchPadAICaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
+        <Route path="/northstar-agency" element={<NorthstarAgencyCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
