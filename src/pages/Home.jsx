@@ -389,8 +389,9 @@ function Home({ dark, setDark, speed, setSpeed }) {
           <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
             I&apos;m Michael, a web developer focused on shipping practical, user-focused applications with clean, scalable front-end
             architecture. I&apos;ve recently launched a few featured projects, including CryptoPulse (crypto analytics),
-            Budget App (expense tracking), Apex-Orbit (game), and Risk Zone (browser game). 
-            
+            Budget App (expense tracking), Apex-Orbit (game), and Risk Zone (browser game).
+            <br />
+            <br />
             I care about dependable UX, clear
             data presentation, and fast, maintainable code, and I&apos;m currently expanding into systems work like API-first
             development, authentication flows, and full-stack architecture.
