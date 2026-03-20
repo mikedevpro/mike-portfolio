@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import BudgetAppCaseStudy from "./pages/BudgetApp.jsx";
-import RiskZoneCaseStudy from "./pages/RiskZone.jsx";
-import PhotographyWebsiteCaseStudy from "./pages/PhotographyWebsite.jsx";
-import LaunchPadAICaseStudy from "./pages/LaunchPadAI.jsx";
-import NorthstarAgencyCaseStudy from "./pages/NorthstarAgency.jsx";
-import LoadTrackerCaseStudy from "./pages/LoadTracker.jsx";
-import MomentumCaseStudy from "./pages/Momentum.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(() => {
@@ -30,13 +23,6 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
-        <Route path="/budget-app" element={<BudgetAppCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
-        <Route path="/risk-zone" element={<RiskZoneCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
-        <Route path="/momentum" element={<MomentumCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
-        <Route path="/photography-website" element={<PhotographyWebsiteCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
-        <Route path="/launchpad-ai" element={<LaunchPadAICaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
-        <Route path="/northstar-agency" element={<NorthstarAgencyCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
-        <Route path="/load-tracker" element={<LoadTrackerCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
