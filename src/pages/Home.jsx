@@ -20,23 +20,35 @@ import {
 
 const PROJECT_LINK_CLASS =
   "tap-fast group relative z-10 inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 " +
-  "text-zinc-900 shadow-sm transition-colors duration-100 " +
+  "text-zinc-900 shadow-sm transition-all duration-150 ease-out " +
   "dark:border-zinc-800 dark:bg-zinc-950 dark:text-white " +
-  "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600";
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 " +
+  "cursor-pointer " +
+  "active:scale-[0.985] active:bg-zinc-100 dark:active:bg-zinc-800 " +
+  "min-h-[44px] px-4 py-2.5 " +
+  "touch-manipulation";
 const PROJECT_LINK_DISABLED_CLASS =
   "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-100/80 px-3 py-2 " +
-  "text-zinc-500 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-400";
+  "text-zinc-500 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-400 " +
+  "cursor-not-allowed opacity-75 " +
+  "min-h-[44px] px-4 py-2.5 " +
+  "touch-manipulation";
 const CONTACT_LINK_CLASS =
   "btn-polish tap-fast group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2 " +
-  "text-zinc-600 transition hover:border-zinc-200 hover:bg-white hover:text-zinc-900 " +
-  "dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white";
+  "text-zinc-600 transition-all duration-150 ease-out hover:border-zinc-200 hover:bg-white hover:text-zinc-900 " +
+  "dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white " +
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 " +
+  "cursor-pointer " +
+  "active:scale-[0.985] active:bg-zinc-100 dark:active:bg-zinc-800 " +
+  "min-h-[44px] px-4 py-2.5 " +
+  "touch-manipulation";
 const SHOW_CONTACT = false;
 
 const PROJECTS = [
   {
     title: "CryptoPulse - Crypto Analytics Dashboard App",
     description:
-      "CryptoPulse is a fully responsive crypto market dashboard that delivers real-time cryptocurrency data through a clean and intuitive interface.  Users can search and sort coins, explore detailed market data, visualize price trends with interactive charts, and build a personalized watchlist using persistent favorites.  The applicaton demostrates modern frontend development practices, including API integrtion. component-based architecture. dynamic routing, and data visualization.",
+      "CryptoPulse is a fully responsive crypto market dashboard that delivers real-time cryptocurrency data through a clean and intuitive interface. Users can search and sort coins, explore detailed market data, visualize price trends with interactive charts, and build a personalized watchlist using persistent favorites. The application demonstrates modern frontend development practices, including API integration, component-based architecture, dynamic routing, and data visualization.",
     focus:
       "Data fetching, resilient UI states, and translating financial data into clear, scannable visuals.",
     outcome:
@@ -44,7 +56,7 @@ const PROJECTS = [
     tech: ["React", "TypeScript", "API Integration", "CoinGecko API", "Recharts", "Tailwind CSS", "Responsive Design", "Data Visualization"],
     links: [
       { label: "Case Study", href: "/cryptopulse", icon: BookOpen },
-      { label: "Live Demo", href: "crypto-pulse-ashy.vercel.app", icon: ExternalLink },
+      { label: "Live Demo", href: "https://crypto-pulse-ashy.vercel.app", icon: ExternalLink },
       { label: "GitHub", href: "https://github.com/mikedevpro/CryptoPulse", icon: Github },
     ],
     icons: [LayoutDashboard, BarChart3, Database],
@@ -325,14 +337,14 @@ function Home({ dark, setDark, speed, setSpeed }) {
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="#projects"
-            className="btn-polish tap-fast rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="btn-polish tap-fast rounded-xl min-h-[44px] bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 active:scale-[0.985] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 touch-manipulation"
           >
             View Projects
           </a>
           {SHOW_CONTACT ? (
             <a
               href="#contact"
-              className="btn-polish tap-fast rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+              className="btn-polish tap-fast rounded-xl min-h-[44px] border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 active:scale-[0.985] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 touch-manipulation"
             >
               Contact
             </a>
@@ -359,7 +371,7 @@ function Home({ dark, setDark, speed, setSpeed }) {
             <PlaygroundCard key={item.title} {...item} />
           ))}
         </div>
-        <div className="mt-10">
+        <div className="mt-10 border-t border-zinc-200/70 pt-6 dark:border-zinc-800/70">
           <h3 className="text-lg font-bold tracking-tight">Coming Soon</h3>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
             GoLang project (Momentum API), Authentication App, and upgrades to current projects.
@@ -383,7 +395,7 @@ function Home({ dark, setDark, speed, setSpeed }) {
         </div>
       </section>
 
-      <section id="about" className="mt-14">
+      <section id="about" className="mt-14 border-t border-zinc-200/70 pt-8 dark:border-zinc-800/70">
         <h2 className="text-xl font-bold tracking-tight">About</h2>
         <div className="mt-5 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
           <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
@@ -454,7 +466,7 @@ function ProjectLink({ link }) {
     <>
       {Icon ? <Icon className="h-4 w-4" /> : null}
       <span>{link.label}</span>
-      <ArrowUpRight className="h-4 w-4 opacity-80" />
+      <ArrowUpRight className="h-4 w-4 opacity-80 transition-opacity duration-150" />
       {isExternal ? (
         <span
           className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg border border-zinc-200 bg-white px-2 py-1 text-xs font-semibold text-zinc-700 opacity-0 shadow-sm transition-opacity group-focus-visible:opacity-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"
