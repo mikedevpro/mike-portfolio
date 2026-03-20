@@ -34,24 +34,20 @@ const SHOW_CONTACT = false;
 
 const PROJECTS = [
   {
-    title: "Risk Zone - Full-Stack Arcade Survival Game",
+    title: "CryptoPulse - Crypto Analytics Dashboard App",
     description:
-      "Real-time Canvas game engine with dynamic difficulty, boss waves, and a global leaderboard powered by FastAPI.",
+      "CryptoPulse is a fully responsive crypto market dashboard that delivers real-time cryptocurrency data through a clean and intuitive interface.  Users can search and sort coins, explore detailed market data, visualize price trends with interactive charts, and build a personalized watchlist using persistent favorites.  The applicaton demostrates modern frontend development practices, including API integrtion. component-based architecture. dynamic routing, and data visualization.",
     focus:
-      "Component reuse, visual consistency, accessibility, and iterative design improvements.",
+      "Data fetching, resilient UI states, and translating financial data into clear, scannable visuals.",
     outcome:
-      "Delivered a polished browser game demo with smooth controls, balanced progression, and public deployment.",
-    tech: ["React", "Canvas API", "FastAPI", "SQLAlchemy", "SQLite", "Vercel", "Render"],
+      "Built a fast, polished dashboard experience that surfaces key market and asset details at a glance.",
+    tech: ["React", "TypeScript", "API Integration", "CoinGecko API", "Recharts", "Tailwind CSS", "Responsive Design", "Data Visualization"],
     links: [
-      { label: "Case Study", href: "/risk-zone", icon: BookOpen},
-      { label: "Live Demo", href: "https://risk-zone.vercel.app/", icon: ExternalLink },
-      {
-        label: "GitHub",
-        href: "https://github.com/mikedevpro/risk-zone",
-        icon: Github,
-      },
+      { label: "Case Study", href: "/cryptopulse", icon: BookOpen },
+      { label: "Live Demo", href: "crypto-pulse-ashy.vercel.app", icon: ExternalLink },
+      { label: "GitHub", href: "https://github.com/mikedevpro/CryptoPulse", icon: Github },
     ],
-    icons: [LayoutDashboard, Code2, Shield],
+    icons: [LayoutDashboard, BarChart3, Database],
   },
   {
     title: "Budget App - Full-Stack Expense Tracker",
@@ -76,6 +72,42 @@ const PROJECTS = [
         icon: Github,
       },
     ],
+  },
+  {
+    title: "Risk Zone - Full-Stack Arcade Survival Game",
+    description:
+      "Real-time Canvas game engine with dynamic difficulty, boss waves, and a global leaderboard powered by FastAPI.",
+    focus:
+      "Component reuse, visual consistency, accessibility, and iterative design improvements.",
+    outcome:
+      "Delivered a polished browser game demo with smooth controls, balanced progression, and public deployment.",
+    tech: ["React", "Canvas API", "FastAPI", "SQLAlchemy", "SQLite", "Vercel", "Render"],
+    links: [
+      { label: "Case Study", href: "/risk-zone", icon: BookOpen},
+      { label: "Live Demo", href: "https://risk-zone.vercel.app/", icon: ExternalLink },
+      {
+        label: "GitHub",
+        href: "https://github.com/mikedevpro/risk-zone",
+        icon: Github,
+      },
+    ],
+    icons: [LayoutDashboard, Code2, Shield],
+  },
+  {
+    title: "Apex-Orbit - Game",
+    description:
+      "A browser-based game focused on dynamic movement and challenge pacing, designed for quick sessions and replayability.",
+    focus:
+      "Input handling, canvas rendering flow, game-loop timing, and performance-conscious front-end architecture.",
+    outcome:
+      "Built a lightweight, polished game experience with clear gameplay progression and responsive controls.",
+    tech: ["React", "JavaScript", "Canvas API", "Responsive Design", "Game Design, Vite"],
+    links: [
+      { label: "Case Study", href: "/apex-orbit", icon: BookOpen },
+      { label: "Live Demo", href: "https://apex-orbit-nxd7.vercel.app", icon: ExternalLink },
+      { label: "GitHub", href: "https://github.com/mikedevpro/apex_orbit", icon: Github },
+    ],
+    icons: [Gamepad2, LayoutDashboard, Code2],
   },
   {
     title: "Python Spending Analytics - Backend Companion to Budget App",
@@ -163,7 +195,7 @@ const PROJECTS = [
     focus: "Data organization and clean UI flow planning for a clear, extensible dashboard-like experience.",
     outcome:
       "Designed the project structure to support a future launch with maintainable frontend architecture and scalable feature growth.",
-    tech: ["Coming Soon", "React", "Tailwind CSS"],
+    tech: ["Ruby On Rails", "React", "Tailwind CSS"],
     links: [
       { label: "Case Study", href: "/load-tracker", icon: BookOpen },
       { label: "Live Demo", href: "#", icon: ExternalLink },
@@ -237,6 +269,31 @@ const PLAYGROUND_ITEMS = [
   // },
 ];
 
+const COMING_SOON_PLAYGROUND_ITEMS = [
+  {
+    title: "GoLang Project (Momentum API)",
+    description: "A Go-powered API playground focused on clean architecture and high-performance endpoints.",
+    icon: Database,
+    href: "#",
+    cta: "Coming Soon",
+  },
+  {
+    title: "Authentication App",
+    description: "Full-stack authentication experience with login, protected routes, and improved user state handling.",
+    icon: Shield,
+    href: "#",
+    cta: "Coming Soon",
+  },
+  {
+    title: "Upgrades to Current Projects",
+    description:
+      "Polished feature expansions and UX upgrades for existing apps across the portfolio.",
+    icon: SlidersHorizontal,
+    href: "#",
+    cta: "Coming Soon",
+  },
+];
+
 function isExternalHref(href) {
   return href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:") || href.startsWith("tel:");
 }
@@ -301,6 +358,19 @@ function Home({ dark, setDark, speed, setSpeed }) {
           {PLAYGROUND_ITEMS.map((item) => (
             <PlaygroundCard key={item.title} {...item} />
           ))}
+        </div>
+        <div className="mt-10">
+          <h3 className="text-lg font-bold tracking-tight">Coming Soon</h3>
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+            GoLang project (Momentum API), Authentication App, and upgrades to current projects.
+            <br />
+            More exciting apps and projects coming soon!
+          </p>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {COMING_SOON_PLAYGROUND_ITEMS.map((item) => (
+              <PlaygroundCard key={item.title} {...item} />
+            ))}
+          </div>
         </div>
       </section>
 
