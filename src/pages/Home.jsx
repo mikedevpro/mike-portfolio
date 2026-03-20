@@ -101,7 +101,7 @@ const PROJECTS = [
       "Input handling, canvas rendering flow, game-loop timing, and performance-conscious front-end architecture.",
     outcome:
       "Built a lightweight, polished game experience with clear gameplay progression and responsive controls.",
-    tech: ["React", "JavaScript", "Canvas API", "Responsive Design", "Game Design, Vite"],
+    tech: ["React", "JavaScript", "Canvas API", "Responsive Design", "Game Design", "Vite"],
     links: [
       { label: "Case Study", href: "/apex-orbit", icon: BookOpen },
       { label: "Live Demo", href: "https://apex-orbit-nxd7.vercel.app", icon: ExternalLink },
@@ -387,13 +387,11 @@ function Home({ dark, setDark, speed, setSpeed }) {
         <h2 className="text-xl font-bold tracking-tight">About</h2>
         <div className="mt-5 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
           <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
-            I&apos;m Michael, a web developer transitioning into software development after working in logistics and transportation.
-            That experience shaped how I approach development: prioritizing reliability, clarity, and real-world usability.
-            <br />
-            <br />
-            I enjoy building practical applications that people can actually use, with a focus on clean UI, readable code,
-            and steady iteration. My current flagship project is a budget tracking app built with React, and I&apos;m expanding
-            into Python to round out my full-stack skill set.
+            I&apos;m Michael, a web developer focused on shipping practical, user-focused applications with clean, scalable front-end
+            architecture. I&apos;ve recently launched a few featured projects, including CryptoPulse (crypto analytics),
+            Budget App (expense tracking), Apex-Orbit (game), and Risk Zone (browser game). I care about dependable UX, clear
+            data presentation, and fast, maintainable code, and I&apos;m currently expanding into systems work like API-first
+            development, authentication flows, and full-stack architecture.
           </p>
         </div>
       </section>
