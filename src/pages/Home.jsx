@@ -1,610 +1,375 @@
-import { memo } from "react";
-import { Link } from "react-router-dom";
+import { Mail, Linkedin, Github } from "lucide-react";
 import Layout from "../components/Layout.jsx";
-import {
-  Mail,
-  Linkedin,
-  Github,
-  ArrowUpRight,
-  BookOpen,
-  ExternalLink,
-  Code2,
-  Database,
-  BarChart3,
-  LayoutDashboard,
-  Shield,
-  Gamepad2,
-  FlaskConical,
-  SlidersHorizontal,
-} from "lucide-react";
 
-const PROJECT_LINK_CLASS =
-  "tap-fast group relative z-10 inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 " +
-  "text-zinc-900 shadow-sm transition-all duration-150 ease-out " +
-  "dark:border-zinc-800 dark:bg-zinc-950 dark:text-white " +
-  "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 " +
-  "cursor-pointer " +
-  "active:scale-[0.985] active:bg-zinc-100 dark:active:bg-zinc-800 " +
-  "min-h-[44px] px-4 py-2.5 " +
-  "touch-manipulation";
-const PROJECT_LINK_DISABLED_CLASS =
-  "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-100/80 px-3 py-2 " +
-  "text-zinc-500 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-400 " +
-  "cursor-not-allowed opacity-75 " +
-  "min-h-[44px] px-4 py-2.5 " +
-  "touch-manipulation";
-const CONTACT_LINK_CLASS =
-  "btn-polish tap-fast group inline-flex items-center gap-2 rounded-xl border border-transparent px-3 py-2 " +
-  "text-zinc-600 transition-all duration-150 ease-out hover:border-zinc-200 hover:bg-white hover:text-zinc-900 " +
-  "dark:text-zinc-300 dark:hover:border-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-white " +
-  "focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 " +
-  "cursor-pointer " +
-  "active:scale-[0.985] active:bg-zinc-100 dark:active:bg-zinc-800 " +
-  "min-h-[44px] px-4 py-2.5 " +
-  "touch-manipulation";
-const SHOW_CONTACT = false;
+const SHOW_CONTACT = true;
 
 const PROJECTS = [
   {
-    title: "CryptoPulse - Crypto Analytics Dashboard App",
-    description:
-      "CryptoPulse is a fully responsive crypto market dashboard that delivers real-time cryptocurrency data through a clean and intuitive interface. Users can search and sort coins, explore detailed market data, visualize price trends with interactive charts, and build a personalized watchlist using persistent favorites. The application demonstrates modern frontend development practices, including API integration, component-based architecture, dynamic routing, and data visualization.",
-    focus:
-      "Data fetching, resilient UI states, and translating financial data into clear, scannable visuals.",
-    outcome:
-      "Built a fast, polished dashboard experience that surfaces key market and asset details at a glance.",
-    tech: ["React", "TypeScript", "API Integration", "CoinGecko API", "Recharts", "Tailwind CSS", "Responsive Design", "Data Visualization"],
-    links: [
-      { label: "Case Study", href: "/cryptopulse", icon: BookOpen },
-      { label: "Live Demo", href: "https://crypto-pulse-ashy.vercel.app", icon: ExternalLink },
-      { label: "GitHub", href: "https://github.com/mikedevpro/CryptoPulse", icon: Github },
-    ],
-    icons: [LayoutDashboard, BarChart3, Database],
-  },
-  {
+    id: "budget-app",
     title: "Budget App - Full-Stack Expense Tracker",
+    subtitle: "Full-stack finance tracker",
     description:
-      "A production-ready budget tracking application that allows users to log expenses, categorize spending, and view summaries and visual insights.",
-    focus:
-      "State management, clean component structure, user-friendly forms, and data persistence.",
-    outcome:
-      "Shipped a stable budgeting workflow with fast expense entry and clear spending insights for day-to-day use.",
-    tech: ["React", "JavaScript", "LocalStorage", "Charts"],
-    icons: [LayoutDashboard, BarChart3, Database],
-    links: [
-      { label: "Case Study", href: "/budget-app", icon: BookOpen },
-      {
-        label: "Live Demo",
-        href: "https://budget-app-lake-omega.vercel.app/",
-        icon: ExternalLink,
-      },
-      {
-        label: "GitHub",
-        href: "https://github.com/mikedevpro/budget_app",
-        icon: Github,
-      },
-    ],
+      "A polished budgeting application focused on real-world money tracking, user-friendly dashboards, and thoughtful product design.",
+    tags: ["React", "JavaScript", "LocalStorage", "Charts"],
+    links: {
+      live: "https://budget-app-lake-omega.vercel.app/",
+      code: "https://github.com/mikedevpro/budget_app",
+    },
   },
   {
-    title: "Risk Zone - Full-Stack Arcade Survival Game",
+    id: "momentum-task-manager",
+    title: "Momentum - Full-Stack Task Manager",
+    subtitle: "Production-ready full-stack task platform",
     description:
-      "Real-time Canvas game engine with dynamic difficulty, boss waves, and a global leaderboard powered by FastAPI.",
-    focus:
-      "Component reuse, visual consistency, accessibility, and iterative design improvements.",
-    outcome:
-      "Delivered a polished browser game demo with smooth controls, balanced progression, and public deployment.",
-    tech: ["React", "Canvas API", "FastAPI", "SQLAlchemy", "SQLite", "Vercel", "Render"],
-    links: [
-      { label: "Case Study", href: "/risk-zone", icon: BookOpen},
-      { label: "Live Demo", href: "https://risk-zone.vercel.app/", icon: ExternalLink },
-      {
-        label: "GitHub",
-        href: "https://github.com/mikedevpro/risk-zone",
-        icon: Github,
-      },
-    ],
-    icons: [LayoutDashboard, Code2, Shield],
+      "Momentum is a full-stack task manager I built while transitioning from trucking into software engineering. It showcases my ability to design and build complete systems—from a Go backend and SQL database to a dynamic React UI.",
+    tags: ["Go", "SQLite", "React", "REST API", "Vite", "Tailwind CSS"],
+    links: {
+      live: "https://momentum-frontend-zeta.vercel.app",
+      code: "https://github.com/mikedevpro/momentum-frontend.git",
+    },
+    featured: true,
   },
   {
+    id: "cryptopulse-analytics-dashboard",
+    title: "CryptoPulse - Crypto Analytics Dashboard",
+    subtitle: "Real-time crypto market dashboard",
+    description:
+      "A sleek crypto app that highlights API integration, data display, and modern frontend UX for real-time market exploration.",
+    tags: ["React", "TypeScript", "API Integration", "CoinGecko API", "Recharts"],
+    links: {
+      live: "https://crypto-pulse-ashy.vercel.app",
+      code: "https://github.com/mikedevpro/CryptoPulse",
+    },
+  },
+  {
+    id: "risk-zone",
+    title: "Risk-Zone",
+    subtitle: "Risk management arcade survival game",
+    description:
+      "Fast, interactive game experience with dynamic difficulty and responsive canvas mechanics.",
+    tags: ["JavaScript", "Canvas", "Game Logic", "React", "Vite", "Render"],
+    links: {
+      live: "https://risk-zone.vercel.app/",
+      code: "https://github.com/mikedevpro/risk-zone",
+    },
+  },
+  {
+    id: "apex-orbit-game",
     title: "Apex-Orbit - Game",
+    subtitle: "Apex-Orbit action-combat browser game",
     description:
-      "A browser-based game focused on dynamic movement and challenge pacing, designed for quick sessions and replayability.",
-    focus:
-      "Input handling, canvas rendering flow, game-loop timing, and performance-conscious front-end architecture.",
-    outcome:
-      "Built a lightweight, polished game experience with clear gameplay progression and responsive controls.",
-    tech: ["React", "JavaScript", "Canvas API", "Responsive Design", "Game Design", "Vite"],
-    links: [
-      { label: "Case Study", href: "/apex-orbit", icon: BookOpen },
-      { label: "Live Demo", href: "https://apex-orbit-nxd7.vercel.app", icon: ExternalLink },
-      { label: "GitHub", href: "https://github.com/mikedevpro/apex_orbit", icon: Github },
-    ],
-    icons: [Gamepad2, LayoutDashboard, Code2],
+      "A browser game centered on quick sessions and replayability through movement-based challenge pacing.",
+    tags: ["React", "JavaScript", "Canvas API", "Responsive Design", "Game Design"],
+    links: {
+      live: "https://apex-orbit-nxd7.vercel.app",
+      code: "https://github.com/mikedevpro/apex_orbit",
+    },
   },
   {
-    title: "Python Spending Analytics - Backend Companion to Budget App",
-    description:
-      "A lightweight Python analytics project designed to explore and summarize spending data.",
-    focus: "Data cleaning, summaries, and a clear path toward future API integration.",
-    outcome:
-      "Built reusable analysis scripts that speed up spending reviews and support future backend/API integration.",
-    tech: ["Python", "Pandas", "CSV/JSON"],
-    links: [{ label: "GitHub", href: "https://github.com/mikedevpro/budget_audit_cli.git", icon: Github }],
-    icons: [BarChart3, Database, Code2],
+    id: "python-spending-analytics",
+    title: "Python Spending Analytics - Budget Companion",
+    subtitle: "Python spending analytics scripts",
+    description: "A lightweight Python analytics project designed to explore and summarize spending data.",
+    tags: ["Python", "Pandas", "CSV/JSON", "Analytics"],
+    links: {
+      live: "#",
+      code: "https://github.com/mikedevpro/budget_audit_cli.git",
+    },
   },
   {
-    title: "PSD/Figma to HTML Practice",
-    description: "Pixel-tight layouts and responsive components built like client work.",
-    focus: "Responsive layout, clean CSS structure, and accessibility basics.",
-    outcome:
-      "Produced responsive mock-to-code builds that improved front-end precision and component consistency.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    links: [
-      { label: "Live Demo", href: "https://psdtohtml-sample.vercel.app", icon: ExternalLink },
-      { label: "GitHub", href: "https://github.com/mikedevpro/PSD-to-HTML-sample/tree/main", icon: Github },
-    ],
-    icons: [LayoutDashboard, Code2],
-  },
-  {
+    id: "photography-website",
     title: "Photography Website",
+    subtitle: "Responsive portfolio showcase",
     description:
-      "A responsive photography portfolio website designed to showcase client work with clean visuals, fast performance, and an easy path to future business features.",
-    focus: "Build a professional, conversion-friendly portfolio for a working photographer, with a structure that can scale into a full business site.",
-    outcome:
-      "Launched a live portfolio that presents work professionally and provides a clear foundation for business expansion.",
-    tech: ["React", "Node", "TypeScript", "Next", "Tailwind CSS"],
-    links: [
-      { label: "Case Study", href: "/photography-website", icon: BookOpen },
-      { label: "Live Demo", href: "https://lancephotosite.vercel.app/", icon: ExternalLink },
-      { label: "GitHub", href: "https://github.com/mikedevpro/lance_photo_site", icon: Github },
-    ],
-    icons: [LayoutDashboard, Code2],
+      "A responsive photography portfolio website designed to showcase work with clean visuals, fast performance, and business-ready structure.",
+    tags: ["React", "Node.js", "TypeScript", "Next.js", "Tailwind CSS"],
+    links: {
+      live: "https://lancephotosite.vercel.app/",
+      code: "https://github.com/mikedevpro/lance_photo_site",
+    },
   },
   {
+    id: "launchpad-ai",
     title: "LaunchPad AI - SaaS Landing Page",
+    subtitle: "Modern SaaS landing page build",
     description:
-      "LaunchPad AI is a front-end portfolio project designed to showcase modern landing page development for SaaS-style products.",
-    focus:
-      "Built with React and Tailwind CSS using reusable components and structured content data for maintainable, scalable UI, with mobile-first navigation and a polished responsive experience.",
-    outcome:
-      "Delivered a conversion-focused landing page featuring an animated FAQ accordion, subtle Framer Motion motion effects, and strong cross-device consistency.",
-    tech: ["React", "Tailwind CSS", "Framer Motion", "JavaScript"],
-    links: [
-      { label: "Case Study", href: "/launchpad-ai", icon: BookOpen },
-      {
-        label: "Live Demo",
-        href: "https://launchpad-ai-theta.vercel.app/",
-        icon: ExternalLink,
-      },
-      {
-        label: "GitHub",
-        href: "https://github.com/mikedevpro/launchpad-ai",
-        icon: Github,
-      },
-    ],
-    icons: [LayoutDashboard, Database, Code2],
+      "A front-end portfolio project designed to showcase modern landing page development for SaaS-style products.",
+    tags: ["React", "Tailwind CSS", "Framer Motion", "JavaScript"],
+    links: {
+      live: "https://launchpad-ai-theta.vercel.app/",
+      code: "https://github.com/mikedevpro/launchpad-ai",
+    },
   },
   {
+    id: "northstar-agency-landing-page",
     title: "Figma to React Responsive Landing Page (Northstar Agency)",
+    subtitle: "Figma-to-React conversion build",
     description:
-      "Northstar Agency is a front-end portfolio project focused on translating a clean, modern design concept into a responsive React application.",
-    focus:
-      "Transforming a visual layout into structured reusable components while preserving hierarchy, spacing, and responsive behavior.",
-    outcome:
-      "Delivered a production-style landing page build with reusable section architecture and dependable cross-device consistency.",
-    tech: ["React", "JavaScript", "Tailwind CSS", "Responsive Design", "Reusable Components"],
-    links: [
-      { label: "Case Study", href: "/northstar-agency", icon: BookOpen },
-      { label: "Live Demo", href: "https://northstar-agency.vercel.app/", icon: ExternalLink },
-      { label: "GitHub", href: "https://github.com/mikedevpro/northstar-agency", icon: Github },
-    ],
-    icons: [LayoutDashboard, LayoutDashboard, Code2],
+      "A focused conversion of a clean design concept into a responsive React application.",
+    tags: ["React", "JavaScript", "Tailwind CSS", "Responsive Design", "Reusable Components"],
+    links: {
+      live: "https://northstar-agency.vercel.app/",
+      code: "https://github.com/mikedevpro/northstar-agency",
+    },
   },
   {
+    id: "load-tracker",
     title: "Load Tracker",
+    subtitle: "Workflow productivity utility",
     description:
-      "A lightweight productivity-style project for tracking daily load and progress workflows.",
-    focus: "Data organization and clean UI flow planning for a clear, extensible dashboard-like experience.",
-    outcome:
-      "Designed the project structure to support a future launch with maintainable frontend architecture and scalable feature growth.",
-    tech: ["Ruby On Rails", "React", "Tailwind CSS"],
-    links: [
-      { label: "Case Study", href: "/load-tracker", icon: BookOpen },
-      { label: "Live Demo", href: "#", icon: ExternalLink },
-      { label: "GitHub", href: "#", icon: Github },
-    ],
-    icons: [LayoutDashboard, LayoutDashboard, Code2],
-  },
-  
-];
-
-const SKILL_GROUPS = [
-  {
-    title: "Frontend",
-    items: ["React", "JavaScript", "HTML", "CSS", "Context API", "Axios"],
-  },
-  { title: "Backend", items: ["Python", "FastAPI (building)", "REST APIs"] },
-  {
-    title: "Tools",
-    items: ["Git/GitHub", "Vercel", "VS Code", "Postman", "Jest (fundamentals)"],
+      "A lightweight productivity project for tracking daily load and progress workflows.",
+    tags: ["Ruby on Rails", "React", "Tailwind CSS"],
+    links: {
+      live: "#",
+      code: "#",
+    },
   },
 ];
 
 const CONTACT_LINKS = [
-  {
-    label: "Email",
-    href: "mailto:mnobles33@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Mike%2C%0A%0AI%20saw%20your%20portfolio%20and...",
-    icon: Mail,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/michael-nobles-0242b014b/overlay/contact-info/",
-    icon: Linkedin,
-    external: true,
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/mikedevpro",
-    icon: Github,
-    external: true,
-  },
+  { href: "mailto:mnobles33@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Mike%2C%0A%0AI%20saw%20your%20portfolio%20and...", icon: Mail, text: "Email Me" },
+  { href: "https://github.com/mikedevpro", icon: Github, text: "GitHub" },
+  { href: "https://www.linkedin.com/in/michael-nobles-0242b014b/overlay/contact-info/", icon: Linkedin, text: "LinkedIn" },
 ];
 
-const PLAYGROUND_ITEMS = [
-  {
-    title: "Risk Zone Challenge",
-    description: "Fast reflex canvas game with score tracking and responsive controls.",
-    icon: Gamepad2,
-    href: "https://risk-zone.vercel.app/",
-    cta: "Play Now",
-  },
-  {
-    title: "Budget App Sandbox",
-    description: "Try the full budgeting workflow with categories, charts, and summaries.",
-    icon: FlaskConical,
-    href: "https://budget-app-lake-omega.vercel.app/",
-    cta: "Launch Demo",
-  },
-  {
-    title: "Apex Orbit",
-    description: "An interactive game experience centered around orbit control and responsive challenge loops.",
-    icon: Gamepad2,
-    href: "#",
-    cta: "Coming Soon",
-  },
-  // {
-  //   title: "Fun Video Games",
-  //   description: "More fun experimental games coming soon!",
-  //   icon: SlidersHorizontal,
-  //   href: "#",
-  //   cta: "More Experiments Soon"
-  // },
-];
+const featuredProject = PROJECTS.find((project) => project.featured) ?? PROJECTS[0];
 
-const COMING_SOON_PLAYGROUND_ITEMS = [
-  {
-    title: "GoLang Project (Momentum API)",
-    description: "A Go-powered API playground focused on clean architecture and high-performance endpoints.",
-    icon: Database,
-    href: "#",
-    cta: "Coming Soon",
-  },
-  {
-    title: "Authentication App",
-    description: "Full-stack authentication experience with login, protected routes, and improved user state handling.",
-    icon: Shield,
-    href: "#",
-    cta: "Coming Soon",
-  },
-  {
-    title: "Upgrades to Current Projects",
-    description:
-      "Polished feature expansions and UX upgrades for existing apps across the portfolio.",
-    icon: SlidersHorizontal,
-    href: "#",
-    cta: "Coming Soon",
-  },
-];
-
-function isExternalHref(href) {
-  return href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:") || href.startsWith("tel:");
-}
-
-function Home({ dark, setDark, speed, setSpeed }) {
+export default function Home({ dark, setDark, speed, setSpeed }) {
   return (
     <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} showContact={SHOW_CONTACT}>
-      <header>
-        <div className="brand-glow inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
-          🚀 Live projects deployed with Vercel
-        </div>
+      <main className="min-h-screen bg-slate-950 text-slate-100">
+        <section className="relative overflow-hidden border-b border-white/10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.16),transparent_30%),linear-gradient(to_bottom,rgba(15,23,42,1),rgba(2,6,23,1))]" />
+          <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-[1.2fr_0.8fr] md:px-10 lg:py-28">
+            <div>
+              <p className="mb-4 inline-flex rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1 text-sm font-medium text-sky-200">
+                Full-Stack Developer • React • Go • Python
+              </p>
+              <h1 className="max-w-4xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+                I build polished, practical web apps with personality.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+                I’m Michael Nobles — a former truck driver turned full-stack developer creating responsive,
+                real-world products with strong UI, solid backend architecture, and a little creative energy.
+              </p>
 
-        <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight brand-gradient">
-          Full-Stack Web Developer building production-ready web apps with React and Python
-        </h1>
-
-        <p className="mt-4 max-w-2xl text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
-          I build clean, user-friendly web applications focused on real-world usability,
-          clear UI, and maintainable code.
-        </p>
-
-        <div className="mt-4 wheel-pill">
-          <span className="wheel-dot" aria-hidden="true" />
-          <span className="text-sm text-zinc-600 dark:text-zinc-300">
-            Built with momentum - powered by curiosity (and roller skates).
-          </span>
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href="#projects"
-            className="btn-polish tap-fast rounded-xl min-h-[44px] bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 active:scale-[0.985] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 touch-manipulation"
-          >
-            View Projects
-          </a>
-          {SHOW_CONTACT ? (
-            <a
-              href="#contact"
-              className="btn-polish tap-fast rounded-xl min-h-[44px] border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 active:scale-[0.985] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600 touch-manipulation"
-            >
-              Contact
-            </a>
-          ) : null}
-        </div>
-      </header>
-
-      <section id="projects" className="mt-14">
-        <h2 className="text-xl font-bold tracking-tight">Featured Projects</h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((project) => (
-            <ProjectCard key={project.title} {...project} />
-          ))}
-        </div>
-      </section>
-
-      <section id="playground" className="mt-14">
-        <h2 className="text-xl font-bold tracking-tight">Interactive Playground</h2>
-        <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-300">
-          Small interactive builds and hands-on demos that highlight UI behavior, state, and game-like interactions.
-        </p>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PLAYGROUND_ITEMS.map((item) => (
-            <PlaygroundCard key={item.title} {...item} />
-          ))}
-        </div>
-        <div className="mt-10 border-t border-zinc-200/70 pt-6 dark:border-zinc-800/70">
-          <h3 className="text-lg font-bold tracking-tight">Coming Soon</h3>
-          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-            GoLang project (Momentum API), Authentication App, and upgrades to current projects.
-            <br />
-            More exciting apps and projects coming soon!
-          </p>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {COMING_SOON_PLAYGROUND_ITEMS.map((item) => (
-              <PlaygroundCard key={item.title} {...item} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" className="mt-14">
-        <h2 className="text-xl font-bold tracking-tight">Skills</h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SKILL_GROUPS.map((group) => (
-            <InfoCard key={group.title} title={group.title} items={group.items} />
-          ))}
-        </div>
-      </section>
-
-      <section id="about" className="mt-14 border-t border-zinc-200/70 pt-8 dark:border-zinc-800/70">
-        <h2 className="text-xl font-bold tracking-tight">About</h2>
-        <div className="mt-5 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
-            I&apos;m Michael, a web developer focused on shipping practical, user-focused applications with clean, scalable front-end
-            architecture. I&apos;ve recently launched a few featured projects, including CryptoPulse (crypto analytics),
-            Budget App (expense tracking), Apex-Orbit (game), and Risk Zone (browser game).
-            <br />
-            <br />
-            I care about dependable UX, clear
-            data presentation, and fast, maintainable code, and I&apos;m currently expanding into systems work like API-first
-            development, authentication flows, and full-stack architecture.
-          </p>
-        </div>
-      </section>
-
-      {SHOW_CONTACT ? (
-        <section id="contact" className="mt-14">
-          <h2 className="text-xl font-bold tracking-tight">Contact</h2>
-
-          <p className="mt-5 mb-4 text-sm text-zinc-600 dark:text-zinc-300">
-            Open to junior or early-mid full-stack roles and excited to contribute to real production teams.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-6 text-sm">
-            {CONTACT_LINKS.map((contact) => {
-              const ContactIcon = contact.icon;
-              const isExternal = Boolean(contact.external);
-              return (
+              <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  key={contact.label}
-                  href={contact.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  className={CONTACT_LINK_CLASS}
+                  href="#projects"
+                  className="rounded-2xl bg-gradient-to-r from-sky-500 to-violet-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-sky-950/40 transition hover:-translate-y-0.5"
                 >
-                  <ContactIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover-boost" />
-                  <span className="hidden sm:inline">{contact.label}</span>
-                  <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" />
+                  View Projects
                 </a>
-              );
-            })}
+                <a
+                  href="#contact"
+                  className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-slate-100 transition hover:bg-white/10"
+                >
+                  Contact Me
+                </a>
+              </div>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {[
+                  ["4+", "Deployed projects"],
+                  ["Full-Stack", "Frontend + backend build skills"],
+                  ["Career Pivot", "Truck driver to developer"],
+                ].map(([value, label]) => (
+                  <div key={label} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                    <div className="text-2xl font-extrabold text-white">{value}</div>
+                    <div className="mt-1 text-sm text-slate-300">{label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-4 self-end">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-sm">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">
+                      Featured Project
+                    </p>
+                    <h2 className="mt-2 text-2xl font-bold text-white">{featuredProject.title}</h2>
+                  </div>
+                  <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-semibold text-emerald-300">
+                    Live Now
+                  </span>
+                </div>
+                <p className="text-sm leading-7 text-slate-300">{featuredProject.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {featuredProject.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-sky-400/20 bg-sky-400/10 px-3 py-1 text-xs font-semibold text-sky-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <a
+                    href={featuredProject.links.live}
+                    className="rounded-xl bg-gradient-to-r from-sky-500 to-violet-500 px-4 py-2 text-sm font-bold text-white"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Live
+                  </a>
+                  <a
+                    href={featuredProject.links.code}
+                    className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Code
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-6 shadow-xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">What I bring</p>
+                <ul className="mt-4 space-y-3 text-sm text-slate-300">
+                  <li>• Responsive UI with strong visual polish</li>
+                  <li>• API integration and backend architecture</li>
+                  <li>• Product-minded development for real users</li>
+                  <li>• A memorable personal story and strong work ethic</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
-      ) : null}
+
+        <section id="projects" className="mx-auto max-w-6xl px-6 py-16 md:px-10 lg:py-20">
+          <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">Projects</p>
+              <h2 className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                Work that proves range and depth
+              </h2>
+            </div>
+            <p className="max-w-2xl text-sm leading-7 text-slate-400">
+              My portfolio is organized to tell a clear story: product thinking, backend strength,
+              API integration, and creative frontend execution.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 items-stretch">
+            {PROJECTS.map((project) => (
+              <article
+                key={project.id}
+                className={`group flex h-full flex-col rounded-3xl border p-6 transition hover:-translate-y-1 hover:border-sky-400/30 hover:bg-slate-900 ${
+                  project.featured
+                    ? "border-sky-400/20 bg-slate-900/90 shadow-xl shadow-sky-950/20"
+                    : "border-white/10 bg-slate-900/70"
+                }`}
+              >
+                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <div className="max-w-2xl flex-1">
+                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                    <p className="mt-1 text-sm font-medium text-sky-300">{project.subtitle}</p>
+                    <p className="mt-4 leading-7 text-slate-300">{project.description}</p>
+                  </div>
+                  <div className="grid w-full min-w-0 flex-none grid-cols-2 gap-2 sm:w-auto sm:gap-3">
+                    {project.links.live === "#" ? (
+                      <span className="inline-flex min-h-10 items-center justify-center text-center rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm font-bold text-slate-300">
+                        Live
+                      </span>
+                    ) : (
+                      <a
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex min-h-10 items-center justify-center text-center rounded-xl bg-gradient-to-r from-sky-500 to-violet-500 px-3 py-2 text-sm font-bold text-white"
+                      >
+                        Live
+                      </a>
+                    )}
+                    {project.links.code === "#" ? (
+                      <span className="inline-flex min-h-10 items-center justify-center text-center rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm font-bold text-slate-300">
+                        Code
+                      </span>
+                    ) : (
+                      <a
+                        href={project.links.code}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex min-h-10 items-center justify-center text-center rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-bold text-slate-100"
+                      >
+                        Code
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-6 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-white/10 bg-slate-900/60">
+          <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:grid-cols-3 md:px-10">
+            {[
+              {
+                title: "Frontend polish",
+                text: "Responsive layouts, visual hierarchy, interaction states, and product-minded UI decisions.",
+              },
+              {
+                title: "Backend capability",
+                text: "REST APIs, database integration, route structure, CRUD operations, and deployment workflows.",
+              },
+              {
+                title: "Creative edge",
+                text: "Games, motion, branding, and personality-driven details that make projects memorable.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:px-10 lg:py-20">
+          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-r from-sky-500/10 via-slate-900 to-violet-500/10 p-8 shadow-2xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">Let’s connect</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
+              Building practical full-stack products and growing into bigger ownership.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300">
+              I’m currently growing my full-stack career through shipped, real projects. If you’re hiring for a
+              frontend or full-stack role, I’d love to connect.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              {CONTACT_LINKS.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.text}
+                    href={link.href}
+                    target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                    className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-slate-100 inline-flex items-center gap-2"
+                  >
+                    {link.text}
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </main>
     </Layout>
   );
 }
-
-function ProjectLink({ link }) {
-  const isUnavailable = !link.href || link.href === "#";
-  const isInternal = !isUnavailable && link.href.startsWith("/");
-  const isExternal = !isUnavailable && isExternalHref(link.href);
-  const Icon = link.icon ?? ExternalLink;
-
-  if (isUnavailable) {
-    return (
-      <span className={PROJECT_LINK_DISABLED_CLASS} aria-disabled="true" title="Link coming soon">
-        <Icon className="h-4 w-4" />
-        <span>{link.label}</span>
-        <span className="rounded-full border border-zinc-300 px-1.5 py-0.5 text-[10px] uppercase tracking-wide dark:border-zinc-700">
-          Soon
-        </span>
-      </span>
-    );
-  }
-
-  const content = (
-    <>
-      {Icon ? <Icon className="h-4 w-4" /> : null}
-      <span>{link.label}</span>
-      <ArrowUpRight className="h-4 w-4 opacity-80 transition-opacity duration-150" />
-      {isExternal ? (
-        <span
-          className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg border border-zinc-200 bg-white px-2 py-1 text-xs font-semibold text-zinc-700 opacity-0 shadow-sm transition-opacity group-focus-visible:opacity-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"
-          role="tooltip"
-        >
-          Open in new tab
-        </span>
-      ) : null}
-    </>
-  );
-
-  if (isInternal) {
-    return (
-      <Link to={link.href} className={PROJECT_LINK_CLASS}>
-        {content}
-      </Link>
-    );
-  }
-
-  return (
-    <a
-      href={link.href}
-      target={isExternal ? "_blank" : undefined}
-      rel={isExternal ? "noopener noreferrer" : undefined}
-      className={PROJECT_LINK_CLASS}
-    >
-      {content}
-    </a>
-  );
-}
-
-const MemoProjectLink = memo(ProjectLink);
-
-const PlaygroundCard = memo(function PlaygroundCard({ title, description, href, cta, icon: Icon }) {
-  const isUnavailable = !href || href === "#";
-  const isExternal = !isUnavailable && isExternalHref(href);
-
-  return (
-    <div className="neon-card rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="inline-flex items-center rounded-lg border border-zinc-200 bg-zinc-50 p-2 text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300">
-        <Icon className="h-4 w-4" />
-      </div>
-      <h3 className="mt-3 text-base font-extrabold tracking-tight">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{description}</p>
-
-      <div className="mt-5">
-        {isUnavailable ? (
-          <span className={PROJECT_LINK_DISABLED_CLASS} aria-disabled="true">
-            <span>{cta}</span>
-          </span>
-        ) : (
-          <a
-            href={href}
-            target={isExternal ? "_blank" : undefined}
-            rel={isExternal ? "noopener noreferrer" : undefined}
-            className={PROJECT_LINK_CLASS}
-          >
-            <span>{cta}</span>
-            <ArrowUpRight className="h-4 w-4 opacity-80" />
-          </a>
-        )}
-      </div>
-    </div>
-  );
-});
-
-const ProjectCard = memo(function ProjectCard({
-  title,
-  description,
-  focus,
-  outcome,
-  tech,
-  links,
-  icons,
-}) {
-  return (
-    <div className="neon-card card-polish motion-shimmer rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="text-base font-extrabold tracking-tight">{title}</div>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{description}</p>
-
-      {icons?.length ? (
-        <div className="mt-3 flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
-          {icons.map((Icon, idx) => (
-            <span
-              key={`${title}-icon-${idx}`}
-              className="inline-flex items-center rounded-lg border border-zinc-200 bg-zinc-50 p-1.5 dark:border-zinc-800 dark:bg-zinc-950"
-              aria-hidden="true"
-            >
-              <Icon className="h-4 w-4" />
-            </span>
-          ))}
-        </div>
-      ) : null}
-
-      <p className="mt-3 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-        <span className="font-semibold">Focus:</span> {focus}
-      </p>
-      <p className="mt-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-        <span className="font-semibold">Outcome:</span> {outcome}
-      </p>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {tech.map((item) => (
-          <span
-            key={item}
-            className="rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-semibold text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-
-      <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
-        <p className="w-full text-[11px] font-bold uppercase tracking-[0.08em] text-zinc-500 dark:text-zinc-400">
-          Project Links
-        </p>
-        {links.map((link) => (
-          <MemoProjectLink key={`${link.label}-${link.href}`} link={link} />
-        ))}
-      </div>
-    </div>
-  );
-});
-
-const InfoCard = memo(function InfoCard({ title, items }) {
-  return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="font-extrabold tracking-tight">{title}</div>
-      <ul className="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
-        {items.map((item) => (
-          <li key={item} className="flex items-start gap-2">
-            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-400" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-});
-
-export default memo(Home);

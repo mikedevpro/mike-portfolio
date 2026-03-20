@@ -31,14 +31,14 @@ export default function Layout({ dark, setDark, speed, setSpeed, showContact = t
       >
         <SkateBackdrop />
 
-        <div className="relative mx-auto max-w-5xl px-5 py-10">
+        <div className="relative mx-auto max-w-6xl px-5 py-10">
           <nav className="flex items-center justify-between">
             <Link
               to="/"
-              className="tap-fast font-extrabold tracking-tight text-lg speed-underline roll-skate"
+              className="tap-fast font-extrabold tracking-tight text-lg speed-underline"
             >
               <span>Michael Nobles</span>
-              <span className="skate" aria-hidden="true">
+              <span className="ml-3" aria-hidden="true">
                 🛼
               </span>
             </Link>
