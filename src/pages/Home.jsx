@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 
 const SHOW_CONTACT = true;
@@ -14,6 +15,7 @@ const PROJECTS = [
     links: {
       live: "https://budget-app-lake-omega.vercel.app/",
       code: "https://github.com/mikedevpro/budget_app",
+      caseStudy: "/projects/budget-app-case-study",
     },
   },
   {
@@ -26,6 +28,7 @@ const PROJECTS = [
     links: {
       live: "https://momentum-frontend-zeta.vercel.app",
       code: "https://github.com/mikedevpro/momentum-frontend.git",
+      caseStudy: "/projects/momentum-case-study",
     },
     featured: true,
   },
@@ -39,6 +42,7 @@ const PROJECTS = [
     links: {
       live: "https://crypto-pulse-ashy.vercel.app",
       code: "https://github.com/mikedevpro/CryptoPulse",
+      caseStudy: "/projects/cryptopulse-case-study",
     },
   },
   {
@@ -139,13 +143,14 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
     <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} showContact={SHOW_CONTACT}>
       <main className="min-h-screen bg-slate-950 text-slate-100">
         <section className="relative overflow-hidden border-b border-white/10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.16),transparent_30%),linear-gradient(to_bottom,rgba(15,23,42,1),rgba(2,6,23,1))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.2),transparent_30%),radial-gradient(circle_at_top_right,rgba(16,185,129,0.18),transparent_32%),linear-gradient(to_bottom,rgba(15,23,42,1),rgba(2,6,23,1))]" />
+          <div className="hero-easter-egg" aria-hidden="true">🛼</div>
           <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-[1.2fr_0.8fr] md:px-10 lg:py-28">
             <div>
-              <p className="mb-4 inline-flex rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1 text-sm font-medium text-sky-200">
+              <p className="mb-4 inline-flex rounded-full border border-emerald-300/30 bg-emerald-400/10 px-4 py-1 text-sm font-semibold text-emerald-100 emerald-glow">
                 Full-Stack Developer • React • Go • Python
               </p>
-              <h1 className="max-w-4xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="hero-title-bold max-w-4xl text-4xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
                 I build polished, practical web apps with personality.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
@@ -156,7 +161,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href="#projects"
-                  className="rounded-2xl bg-gradient-to-r from-sky-500 to-violet-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-sky-950/40 transition hover:-translate-y-0.5"
+                  className="rounded-2xl bg-gradient-to-r from-sky-500 via-emerald-400 to-cyan-500 px-6 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-950/30 transition hover:-translate-y-0.5"
                 >
                   View Projects
                 </a>
@@ -174,7 +179,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                   ["Full-Stack", "Frontend + backend build skills"],
                   ["Career Pivot", "Truck driver to developer"],
                 ].map(([value, label]) => (
-                  <div key={label} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                  <div key={label} className="glass-card rounded-2xl p-4">
                     <div className="text-2xl font-extrabold text-white">{value}</div>
                     <div className="mt-1 text-sm text-slate-300">{label}</div>
                   </div>
@@ -183,10 +188,10 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
             </div>
 
             <div className="grid gap-4 self-end">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-sm">
+              <div className="glass-card emerald-glow rounded-3xl p-6 shadow-2xl">
                 <div className="mb-4 flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">
                       Featured Project
                     </p>
                     <h2 className="mt-2 text-2xl font-bold text-white">{featuredProject.title}</h2>
@@ -226,8 +231,8 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-6 shadow-xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">What I bring</p>
+              <div className="glass-card rounded-3xl p-6 shadow-xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">What I bring</p>
                 <ul className="mt-4 space-y-3 text-sm text-slate-300">
                   <li>• Responsive UI with strong visual polish</li>
                   <li>• API integration and backend architecture</li>
@@ -257,19 +262,24 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
             {PROJECTS.map((project) => (
               <article
                 key={project.id}
-                className={`group flex h-full flex-col rounded-3xl border p-6 transition hover:-translate-y-1 hover:border-sky-400/30 hover:bg-slate-900 ${
+                className={`group glass-card flex h-full flex-col rounded-3xl p-6 transition hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-slate-900 ${
                   project.featured
-                    ? "border-sky-400/20 bg-slate-900/90 shadow-xl shadow-sky-950/20"
-                    : "border-white/10 bg-slate-900/70"
+                    ? "emerald-glow border-emerald-300/25 bg-slate-900/90 shadow-xl shadow-emerald-950/30"
+                    : "shadow-xl shadow-slate-950/20"
                 }`}
               >
-                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                  <div className="max-w-2xl flex-1">
-                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                    <p className="mt-1 text-sm font-medium text-sky-300">{project.subtitle}</p>
-                    <p className="mt-4 leading-7 text-slate-300">{project.description}</p>
+                <div className="flex flex-1 flex-col">
+                  <div className="max-w-2xl">
+                    <h3 className="min-h-[3.5rem] text-2xl font-bold leading-tight text-white">{project.title}</h3>
+                    <p className="mt-2 min-h-[1.25rem] text-sm font-medium text-sky-300">{project.subtitle}</p>
+                    <p className="mt-4 min-h-[8.75rem] leading-7 text-slate-300">{project.description}</p>
                   </div>
-                  <div className="grid w-full min-w-0 flex-none grid-cols-2 gap-2 sm:w-auto sm:gap-3">
+
+                  <div
+                    className={`mt-6 grid gap-2 sm:gap-3 ${
+                      project.links.caseStudy ? "grid-cols-3" : "grid-cols-2"
+                    }`}
+                  >
                     {project.links.live === "#" ? (
                       <span className="inline-flex min-h-10 items-center justify-center text-center rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-sm font-bold text-slate-300">
                         Live
@@ -279,7 +289,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                         href={project.links.live}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex min-h-10 items-center justify-center text-center rounded-xl bg-gradient-to-r from-sky-500 to-violet-500 px-3 py-2 text-sm font-bold text-white"
+                        className="inline-flex min-h-10 items-center justify-center text-center rounded-xl bg-gradient-to-r from-sky-500 via-emerald-400 to-cyan-500 px-3 py-2 text-sm font-bold text-slate-950"
                       >
                         Live
                       </a>
@@ -298,6 +308,14 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                         Code
                       </a>
                     )}
+                    {project.links.caseStudy ? (
+                      <Link
+                        to={project.links.caseStudy}
+                        className="inline-flex min-h-10 items-center justify-center text-center rounded-xl border border-sky-400/30 bg-sky-400/10 px-3 py-2 text-sm font-bold text-sky-200"
+                      >
+                        Case Study
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
 
@@ -332,7 +350,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                 text: "Games, motion, branding, and personality-driven details that make projects memorable.",
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div key={item.title} className="glass-card rounded-3xl p-6">
                 <h3 className="text-xl font-bold text-white">{item.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
               </div>
@@ -341,8 +359,8 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
         </section>
 
         <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:px-10 lg:py-20">
-          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-r from-sky-500/10 via-slate-900 to-violet-500/10 p-8 shadow-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">Let’s connect</p>
+          <div className="glass-card rounded-[2rem] bg-gradient-to-r from-sky-500/10 via-slate-900 to-emerald-500/10 p-8 shadow-2xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Let’s connect</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
               Building practical full-stack products and growing into bigger ownership.
             </h2>
