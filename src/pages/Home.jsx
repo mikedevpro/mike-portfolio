@@ -6,6 +6,19 @@ const SHOW_CONTACT = true;
 
 const PROJECTS = [
   {
+    id: "budget-app-v2",
+    title: "Budget App V2",
+    subtitle: "Next-gen personal budgeting experience",
+    description:
+      "A redesigned second iteration of my budgeting app focused on faster workflows, clearer financial insights, and improved UX across devices.",
+    tags: ["Next.js (App Router)", "TypeScript", "Supabase", "Tailwind CSS", "Recharts"],
+    links: {
+      live: "https://budget-app-v2-chi.vercel.app",
+      code: "https://github.com/mikedevpro/budget_app_v2.git",
+      caseStudy: "/projects/budget-app-v2-case-study",
+    },
+  },
+  {
     id: "budget-app",
     title: "Budget App - Full-Stack Expense Tracker",
     subtitle: "Full-stack finance tracker",

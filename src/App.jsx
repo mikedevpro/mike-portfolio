@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import CryptoPulseCaseStudy from "./pages/CryptoPulseCaseStudy.jsx";
 import BudgetAppCaseStudy from "./pages/BudgetAppCaseStudy.jsx";
 import MomentumCaseStudy from "./pages/MomentumCaseStudy.jsx";
+import BudgetAppV2CaseStudy from "./pages/BudgetAppV2CaseStudy.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(() => {
@@ -33,6 +34,10 @@ export default function App() {
         <Route
           path="/projects/budget-app-case-study"
           element={<BudgetAppCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />}
+        />
+        <Route
+          path="/projects/budget-app-v2-case-study"
+          element={<BudgetAppV2CaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />}
         />
         <Route
           path="/projects/momentum-case-study"
