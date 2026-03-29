@@ -75,6 +75,15 @@ const OUTCOME = [
   "Real-world feature implementation.",
 ];
 
+const FUTURE_IMPROVEMENTS = [
+  "Recurring transactions and scheduled bills.",
+  "Savings goals with progress forecasting.",
+  "Budget alerts and monthly summary notifications.",
+  "Multi-currency support.",
+  "Multi-account support with richer category rules.",
+  "PDF export and deeper reporting views.",
+];
+
 export default function BudgetAppV2CaseStudy({ dark, setDark, speed, setSpeed }) {
   return (
     <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} showContact={false}>
@@ -242,6 +251,15 @@ export default function BudgetAppV2CaseStudy({ dark, setDark, speed, setSpeed })
           </p>
           <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-200">
             {OUTCOME.map((item) => (
+              <li key={item}>• {item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-6 glass-card rounded-3xl p-6 md:p-8">
+          <h2 className="text-2xl font-bold text-white">Future Improvements</h2>
+          <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-200">
+            {FUTURE_IMPROVEMENTS.map((item) => (
               <li key={item}>• {item}</li>
             ))}
           </ul>

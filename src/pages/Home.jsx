@@ -6,6 +6,33 @@ const SHOW_CONTACT = true;
 
 const PROJECTS = [
   {
+    id: "cryptopulse-analytics-dashboard",
+    title: "CryptoPulse - Crypto Analytics Dashboard",
+    subtitle: "Real-time crypto market dashboard",
+    description:
+      "A sleek crypto app that highlights API integration, data display, and modern frontend UX for real-time market exploration.",
+    tags: ["React", "TypeScript", "API Integration", "CoinGecko API", "Recharts"],
+    links: {
+      live: "https://crypto-pulse-ashy.vercel.app",
+      code: "https://github.com/mikedevpro/CryptoPulse",
+      caseStudy: "/projects/cryptopulse-case-study",
+    },
+  },
+  {
+    id: "momentum-task-manager",
+    title: "Momentum - Full-Stack Task Manager",
+    subtitle: "Production-ready full-stack task platform",
+    description:
+      "Momentum is a full-stack task manager I built while transitioning from trucking into software engineering. It showcases my ability to design and build complete systems—from a Go backend and SQL database to a dynamic React UI.",
+    tags: ["Go", "SQLite", "React", "REST API", "Vite", "Tailwind CSS"],
+    links: {
+      live: "https://momentum-frontend-zeta.vercel.app",
+      code: "https://github.com/mikedevpro/momentum-frontend.git",
+      caseStudy: "/projects/momentum-case-study",
+    },
+    featured: true,
+  },
+  {
     id: "budget-app-v2",
     title: "Budget App V2",
     subtitle: "Next-gen personal budgeting experience",
@@ -32,33 +59,6 @@ const PROJECTS = [
     },
   },
   {
-    id: "momentum-task-manager",
-    title: "Momentum - Full-Stack Task Manager",
-    subtitle: "Production-ready full-stack task platform",
-    description:
-      "Momentum is a full-stack task manager I built while transitioning from trucking into software engineering. It showcases my ability to design and build complete systems—from a Go backend and SQL database to a dynamic React UI.",
-    tags: ["Go", "SQLite", "React", "REST API", "Vite", "Tailwind CSS"],
-    links: {
-      live: "https://momentum-frontend-zeta.vercel.app",
-      code: "https://github.com/mikedevpro/momentum-frontend.git",
-      caseStudy: "/projects/momentum-case-study",
-    },
-    featured: true,
-  },
-  {
-    id: "cryptopulse-analytics-dashboard",
-    title: "CryptoPulse - Crypto Analytics Dashboard",
-    subtitle: "Real-time crypto market dashboard",
-    description:
-      "A sleek crypto app that highlights API integration, data display, and modern frontend UX for real-time market exploration.",
-    tags: ["React", "TypeScript", "API Integration", "CoinGecko API", "Recharts"],
-    links: {
-      live: "https://crypto-pulse-ashy.vercel.app",
-      code: "https://github.com/mikedevpro/CryptoPulse",
-      caseStudy: "/projects/cryptopulse-case-study",
-    },
-  },
-  {
     id: "risk-zone",
     title: "Risk-Zone",
     subtitle: "Risk management arcade survival game",
@@ -80,17 +80,6 @@ const PROJECTS = [
     links: {
       live: "https://apex-orbit-nxd7.vercel.app",
       code: "https://github.com/mikedevpro/apex_orbit",
-    },
-  },
-  {
-    id: "python-spending-analytics",
-    title: "Python Spending Analytics - Budget Companion",
-    subtitle: "Python spending analytics scripts",
-    description: "A lightweight Python analytics project designed to explore and summarize spending data.",
-    tags: ["Python", "Pandas", "CSV/JSON", "Analytics"],
-    links: {
-      live: "#",
-      code: "https://github.com/mikedevpro/budget_audit_cli.git",
     },
   },
   {
@@ -137,8 +126,9 @@ const PROJECTS = [
       "A lightweight productivity project for tracking daily load and progress workflows.",
     tags: ["Ruby on Rails", "React", "Tailwind CSS"],
     links: {
-      live: "#",
-      code: "#",
+      live: "https://load-tracker-dashboard.vercel.app",
+      code: "https://github.com/mikedevpro/load_tracker.git",
+      caseStudy: "/projects/load-tracker-case-study",
     },
   },
 ];
@@ -168,7 +158,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
                 I’m Michael Nobles — a former truck driver turned full-stack developer creating responsive,
-                real-world products with strong UI, solid backend architecture, and a little creative energy.
+                real-world products with strong UI, solid backend architecture, and a little creative energy.  My projects showcase a range of skills and a focus on building things that people find useful and enjoyable.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
@@ -267,7 +257,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
             </div>
             <p className="max-w-2xl text-sm leading-7 text-slate-400">
               My portfolio is organized to tell a clear story: product thinking, backend strength,
-              API integration, and creative frontend execution.
+              API integration, and creative frontend execution.  Built by curosity and roller skates, my projects show a range of skills and a focus on real-world value.
             </p>
           </div>
 
@@ -347,27 +337,79 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
           </div>
         </section>
 
-        <section className="border-y border-white/10 bg-slate-900/60">
-          <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:grid-cols-3 md:px-10">
-            {[
-              {
-                title: "Frontend polish",
-                text: "Responsive layouts, visual hierarchy, interaction states, and product-minded UI decisions.",
-              },
-              {
-                title: "Backend capability",
-                text: "REST APIs, database integration, route structure, CRUD operations, and deployment workflows.",
-              },
-              {
-                title: "Creative edge",
-                text: "Games, motion, branding, and personality-driven details that make projects memorable.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="glass-card rounded-3xl p-6">
-                <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
-              </div>
-            ))}
+        <section id="skills" className="border-y border-white/10 bg-slate-900/60">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:px-10">
+            <div className="mb-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">Skills</p>
+              <h2 className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                Full-stack skills built through shipped projects
+              </h2>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  title: "Frontend",
+                  text: "React, Next.js, TypeScript, Tailwind CSS, responsive UI systems, and polished interaction design.",
+                },
+                {
+                  title: "Backend",
+                  text: "Go, REST APIs, SQL/SQLite, Supabase, CRUD architecture, and practical data modeling.",
+                },
+                {
+                  title: "Product + Delivery",
+                  text: "Feature scoping, UX-focused development, Git/GitHub workflows, debugging, and Vercel deployment.",
+                },
+              ].map((item) => (
+                <article key={item.title} className="glass-card rounded-3xl p-6">
+                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="mx-auto max-w-6xl px-6 py-16 md:px-10 lg:py-20">
+          <div className="glass-card rounded-[2rem] border border-white/10 p-8 md:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">About</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
+              From trucking routes to full-stack product building
+            </h2>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300">
+              I transitioned from professional trucking into software engineering and now focus on building practical,
+              user-centered products. My work combines clean UI, reliable backend structure, and strong ownership from
+              idea to deployment.
+            </p>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">
+              I am currently focused on frontend and full-stack opportunities where I can keep shipping real value,
+              grow inside strong teams, and take on bigger product responsibility.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://github.com/mikedevpro"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
+              >
+                View GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/michael-nobles-0242b014b/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center rounded-xl border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-bold text-sky-200 hover:bg-sky-400/20"
+              >
+                Connect on LinkedIn
+              </a>
+              <a
+                href="mailto:mnobles33@gmail.com?subject=Portfolio%20Inquiry"
+                className="inline-flex items-center rounded-xl bg-gradient-to-r from-sky-500 via-emerald-400 to-cyan-500 px-4 py-2 text-sm font-bold text-slate-950"
+              >
+                Email Me
+              </a>
+            </div>
           </div>
         </section>
 
