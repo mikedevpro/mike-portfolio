@@ -2,7 +2,7 @@ import { Mail, Linkedin, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 
-const SHOW_CONTACT = true;
+const SHOW_CONTACT = false;
 
 const PROJECTS = [
   {
@@ -169,12 +169,17 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                   View Projects
                 </a>
                 <a
-                  href="#contact"
+                  href={SHOW_CONTACT ? "#contact" : "#about"}
                   className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-slate-100 transition hover:bg-white/10"
                 >
-                  Contact Me
+                  {SHOW_CONTACT ? "Contact Me" : "About Me"}
                 </a>
               </div>
+              {!SHOW_CONTACT ? (
+                <p className="mt-4 inline-flex rounded-xl border border-amber-300/30 bg-amber-400/10 px-4 py-2 text-sm font-medium text-amber-100">
+                  Contact links are temporarily offline. Please check back soon.
+                </p>
+              ) : null}
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {[
@@ -386,62 +391,66 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
               grow inside strong teams, and take on bigger product responsibility.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="https://github.com/mikedevpro"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
-              >
-                View GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/michael-nobles-0242b014b/"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center rounded-xl border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-bold text-sky-200 hover:bg-sky-400/20"
-              >
-                Connect on LinkedIn
-              </a>
-              <a
-                href="mailto:mnobles33@gmail.com?subject=Portfolio%20Inquiry"
-                className="inline-flex items-center rounded-xl bg-gradient-to-r from-sky-500 via-emerald-400 to-cyan-500 px-4 py-2 text-sm font-bold text-slate-950"
-              >
-                Email Me
-              </a>
-            </div>
+            {SHOW_CONTACT ? (
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="https://github.com/mikedevpro"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
+                >
+                  View GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/michael-nobles-0242b014b/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center rounded-xl border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-bold text-sky-200 hover:bg-sky-400/20"
+                >
+                  Connect on LinkedIn
+                </a>
+                <a
+                  href="mailto:mnobles33@gmail.com?subject=Portfolio%20Inquiry"
+                  className="inline-flex items-center rounded-xl bg-gradient-to-r from-sky-500 via-emerald-400 to-cyan-500 px-4 py-2 text-sm font-bold text-slate-950"
+                >
+                  Email Me
+                </a>
+              </div>
+            ) : null}
           </div>
         </section>
 
-        <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:px-10 lg:py-20">
-          <div className="glass-card rounded-[2rem] bg-gradient-to-r from-sky-500/10 via-slate-900 to-emerald-500/10 p-8 shadow-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Let’s connect</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
-              Building practical full-stack products and growing into bigger ownership.
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300">
-              I’m currently growing my full-stack career through shipped, real projects. If you’re hiring for a
-              frontend or full-stack role, I’d love to connect.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              {CONTACT_LINKS.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={link.text}
-                    href={link.href}
-                    target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-                    rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                    className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-slate-100 inline-flex items-center gap-2"
-                  >
-                    {link.text}
-                    <Icon className="h-4 w-4" />
-                  </a>
-                );
-              })}
+        {SHOW_CONTACT ? (
+          <section id="contact" className="mx-auto max-w-6xl px-6 py-16 md:px-10 lg:py-20">
+            <div className="glass-card rounded-[2rem] bg-gradient-to-r from-sky-500/10 via-slate-900 to-emerald-500/10 p-8 shadow-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Connect</p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                Open to opportunities and meaningful product work.
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300">
+                If you are hiring for frontend or full-stack roles, feel free to reach out. I enjoy building practical products
+                with strong UX and reliable architecture.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                {CONTACT_LINKS.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.text}
+                      href={link.href}
+                      target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                      rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                      className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-slate-100 inline-flex items-center gap-2"
+                    >
+                      {link.text}
+                      <Icon className="h-4 w-4" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
       </main>
     </Layout>
   );
