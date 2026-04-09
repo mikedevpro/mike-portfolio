@@ -6,6 +6,21 @@ const SHOW_CONTACT = false;
 
 const PROJECTS = [
   {
+    id: "flowspark",
+    title: "FlowSpark - Premium SaaS Landing Page",
+    subtitle: "Performance-first SaaS landing page with modern UI and product-level polish",
+    description:
+      "A high-performance SaaS marketing site built with Astro and Tailwind CSS, focused on delivering a fast, modern, and conversion-driven user experience.\n\nDesigned with a component-based architecture and performance-first mindset, FlowSpark showcases clean UI systems, subtle animations, and a fully responsive layout. The project includes a branded design system, advanced dashboard-style mock UI, and a dedicated pricing page to simulate a real production-ready product site.",
+    tags: ["Astro", "Tailwind CSS", "Responsive UI", "Marketing Design"],
+    links: {
+      live: "https://flow-spark-two.vercel.app",
+      code: "https://github.com/mikedevpro/FlowSpark.git",
+      // Optional: remove this line if you don't have a case study page.
+      caseStudy: "/projects/flowspark-case-study",
+    },
+    featured: true,
+  },
+  {
     id: "cryptopulse-analytics-dashboard",
     title: "CryptoPulse - Crypto Analytics Dashboard",
     subtitle: "Real-time crypto market dashboard",
@@ -30,7 +45,7 @@ const PROJECTS = [
       code: "https://github.com/mikedevpro/momentum-frontend.git",
       caseStudy: "/projects/momentum-case-study",
     },
-    featured: true,
+    featured: false,
   },
   {
     id: "budget-app-v2",
@@ -208,7 +223,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                     Live Now
                   </span>
                 </div>
-                <p className="text-sm leading-7 text-slate-300">{featuredProject.description}</p>
+                <p className="whitespace-pre-line text-sm leading-7 text-slate-300">{featuredProject.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {featuredProject.tags.map((tag) => (
                     <span
@@ -280,7 +295,7 @@ export default function Home({ dark, setDark, speed, setSpeed }) {
                   <div className="max-w-2xl">
                     <h3 className="min-h-[3.5rem] text-2xl font-bold leading-tight text-white">{project.title}</h3>
                     <p className="mt-2 min-h-[1.25rem] text-sm font-medium text-sky-300">{project.subtitle}</p>
-                    <p className="mt-4 min-h-[8.75rem] leading-7 text-slate-300">{project.description}</p>
+                    <p className="mt-4 min-h-[8.75rem] whitespace-pre-line leading-7 text-slate-300">{project.description}</p>
                   </div>
 
                   <div

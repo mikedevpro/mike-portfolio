@@ -6,6 +6,7 @@ import BudgetAppCaseStudy from "./pages/BudgetAppCaseStudy.jsx";
 import MomentumCaseStudy from "./pages/MomentumCaseStudy.jsx";
 import BudgetAppV2CaseStudy from "./pages/BudgetAppV2CaseStudy.jsx";
 import LoadTrackerCaseStudy from "./pages/LoadTrackerCaseStudy.jsx";
+import FlowSparkCaseStudy from "./pages/FlowSparkCaseStudy.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(() => {
@@ -47,6 +48,10 @@ export default function App() {
         <Route
           path="/projects/load-tracker-case-study"
           element={<LoadTrackerCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />}
+        />
+        <Route
+          path="/projects/flowspark-case-study"
+          element={<FlowSparkCaseStudy dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
