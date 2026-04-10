@@ -2,7 +2,7 @@ import { Mail, Linkedin, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 
-const SHOW_CONTACT = false;
+const SHOW_CONTACT = true;
 
 const PROJECTS = [
   {
