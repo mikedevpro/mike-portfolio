@@ -192,8 +192,29 @@ const SCREENSHOT_CAPTIONS = [
 ];
 
 export default function CryptoPulseCaseStudy({ dark, setDark, speed, setSpeed }) {
-  const [desktopScreenshotFailed, setDesktopScreenshotFailed] = useState(false);
+  const [desktopScreenshotFailures, setDesktopScreenshotFailures] = useState({});
   const [mobileScreenshotFailed, setMobileScreenshotFailed] = useState(false);
+  const desktopScreenshots = [
+    {
+      src: "/images/cryptopulse-dashboard.png",
+      alt: "CryptoPulse desktop dashboard screenshot showing market overview and charts",
+      label: "Overview",
+    },
+    {
+      src: "/images/cryptopulse-desktop-stats.png",
+      alt: "CryptoPulse desktop dashboard screenshot showing watchlist and top gainers and losers cards",
+      label: "Stats + Watchlist",
+    },
+    {
+      src: "/images/cryptopulse-desktop-table.png",
+      alt: "CryptoPulse desktop dashboard screenshot showing sortable market table with prices and volume",
+      label: "Market Table",
+    },
+  ];
+
+  const markDesktopScreenshotFailed = (src) => {
+    setDesktopScreenshotFailures((previous) => ({ ...previous, [src]: true }));
+  };
 
   return (
     <Layout dark={dark} setDark={setDark} speed={speed} setSpeed={setSpeed} showContact={false}>
@@ -260,25 +281,34 @@ export default function CryptoPulseCaseStudy({ dark, setDark, speed, setSpeed })
               <div className="mb-3 flex items-center justify-between">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-sky-200">Desktop View</h3>
               </div>
-              {!desktopScreenshotFailed ? (
-                <img
-                  src="/images/cryptopulse-dashboard.png"
-                  alt="CryptoPulse desktop dashboard screenshot showing market overview and charts"
-                  className="h-auto w-full rounded-xl border border-white/10 object-cover shadow-xl"
-                  loading="lazy"
-                  onError={() => setDesktopScreenshotFailed(true)}
-                />
-              ) : (
-                <div className="flex min-h-[260px] w-full items-center justify-center rounded-xl border border-dashed border-sky-300/30 bg-gradient-to-br from-sky-500/10 via-slate-900/40 to-blue-500/10 p-6 text-center">
-                  <div>
-                    <ImageIcon className="mx-auto h-8 w-8 text-sky-300" />
-                    <p className="mt-3 text-sm font-semibold text-sky-200">Desktop screenshot placeholder</p>
-                    <p className="mt-2 text-sm text-slate-300">
-                      Add image at <code className="rounded bg-slate-950 px-1.5 py-0.5 text-slate-200">public/images/cryptopulse-dashboard.png</code>
+              <div className="space-y-4">
+                {desktopScreenshots.map((screenshot) => (
+                  <div key={screenshot.src}>
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">
+                      {screenshot.label}
                     </p>
+                    {!desktopScreenshotFailures[screenshot.src] ? (
+                      <img
+                        src={screenshot.src}
+                        alt={screenshot.alt}
+                        className="h-auto w-full rounded-xl border border-white/10 object-cover shadow-xl"
+                        loading="lazy"
+                        onError={() => markDesktopScreenshotFailed(screenshot.src)}
+                      />
+                    ) : (
+                      <div className="flex min-h-[220px] w-full items-center justify-center rounded-xl border border-dashed border-sky-300/30 bg-gradient-to-br from-sky-500/10 via-slate-900/40 to-blue-500/10 p-6 text-center">
+                        <div>
+                          <ImageIcon className="mx-auto h-8 w-8 text-sky-300" />
+                          <p className="mt-3 text-sm font-semibold text-sky-200">Desktop screenshot placeholder</p>
+                          <p className="mt-2 text-sm text-slate-300">
+                            Add image at <code className="rounded bg-slate-950 px-1.5 py-0.5 text-slate-200">public{screenshot.src}</code>
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              )}
+                ))}
+              </div>
             </article>
 
             <article className="rounded-2xl border border-white/10 bg-white/5 p-4">
