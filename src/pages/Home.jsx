@@ -35,7 +35,7 @@ const PROJECTS = [
   },
   {
     id: "daily-grace-prayer-app",
-    title: "Daily Grace - Prayer App",
+    title: "Daily Grace - Prayer App Prototype",
     subtitle: "Working prototype for daily prayer and reflection",
     description:
       "A working prayer app prototype designed to help users build a steady daily rhythm through guided prayer, personal reflection, and a calm, encouraging interface.",
