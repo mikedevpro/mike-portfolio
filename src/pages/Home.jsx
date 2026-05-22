@@ -34,6 +34,18 @@ const PROJECTS = [
     },
   },
   {
+    id: "daily-grace-prayer-app",
+    title: "Daily Grace - Prayer App",
+    subtitle: "Working prototype for daily prayer and reflection",
+    description:
+      "A working prayer app prototype designed to help users build a steady daily rhythm through guided prayer, personal reflection, and a calm, encouraging interface.",
+    tags: ["React", "JavaScript", "Prototype", "Responsive UI", "Product Design"],
+    links: {
+      live: "https://daily-grace-rho.vercel.app",
+      code: "https://github.com/mikedevpro/daily-grace.git",
+    },
+  },
+  {
     id: "momentum-task-manager",
     title: "Momentum - Full-Stack Task Manager",
     subtitle: "Production-ready full-stack task platform",
